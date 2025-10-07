@@ -50,8 +50,7 @@
             </div>
               <div class="about-col-2">
                      <h2 class="sub-title">About Myself</h2>
-                      <p>I am a graduate in IT Engineering from OULU UAS and 
-                        currently doing Masters in IT Engineering in the University Of Turku.
+                      <p>I am working as R and D Developer and nearly graduating with a Masters Degree in IT Engineering in the University Of Turku.
                       </p>
             
                     <div class="tab-titles">
@@ -63,29 +62,31 @@
                    <div class="tab-contents active-tab" id="skills">
                       <ul>
                         <li><span>Programming languages</span><br>JavaScript,Python</li>
-                        <li><span>Frameworks</span><br>React,Node,Flask,Express,.Net</li>
-                        <li><span>Agile Methodologies</span><br>Git, Scrum,Jira,Software Development lifecycles</li>
-                        <li><span>Database Design and Data Analysis</span><br>SQL,Excel,MySQl,MongoDb</li>
+                        <li><span>Frameworks</span><br>React, Node, FastAPI, Flask, Express,.Net</li>
+                        <li><span>Data Science</span><br>Data Analysis, AI, Machine learning, Deep Learning</li>
+                        <li><span>Agile Methodologies</span><br>Git, Scrum,Jira,Software Development Lifecycle</li>
+                        <li><span>Database Design</span><br>SQL,PostgreSQL,MySQl,MongoDB</li>
                         <li><span>Knowledgeable and Understandings</span><br>C#,Java, Php, Basic testing,Cloud Technologies:MS Azure/Google Cloud,DevOps methods</br>
-                         Jenkins,DevOps basics,Linux OS,Power Bi, MS Office,Technical Documentation</li>
+                         Jenkins,DevOps,Linux OS,Power Bi, MS Office,Technical Documentation</li>
                     </ul>
                 </div>
 
                <div class="tab-contents" id="experiences">
                     <ul>
-                        <li><span>05/2023-Current</span><br>Research and Development Developer Vaisala(React,C#,.Net,Typescript)</li>
+                        <li><span>02/2024-Current</span><br>Research Assistant University oF Turku(Advanced Machine Vision System for Food Detection)</br>
+                        Working with AI/ML models, React, Python, FastAPI, Redux, Image Processing Libraries, WebSOckets
+                        </li>
+                        <li><span>05/2023-Current</span><br>Research and D Summer Project Developer Vaisala(React,C#,.Net,Typescript)</li>
                         <li><span>05/2021-08/2021</span><br>Research and Development Project Trainee in OAMK(frontend, React)</li>
                         <li><span>10/2020-01/2021</span><br>Internship in Technological University Dublin's project(Java,Node)</li>
                         <li><span>11/2019-04/2020</span><br>Software Developer Trainee in PiiMega Oy(SQL,C#,.Net)</li>
-                        <li><span>01/2019-07/2019</span><br>Internship in Nepgo Ry Association(HTML,CSS,React)</li>
-                        <li><span>10/2019-12/2019</span><br>Research and Development Project Demola Global</li>
                     </ul>
                 </div>
 
                 <div class="tab-contents" id="education">
                     <ul>
                         <li><span>University Of Turku(2023-Ongoing)</span><br>Masters in Information Technology Engineering</br>
-                             Majoring in Advanced Agile Software development Practices</li>
+                             Majoring in Advanced Software Engineering with Data Science</li>
                        <li><span>Oulu University Of Applied sciences(2018-2022)</span><br>Bachelor's Degree in Information Technology Engineering</br>
                              My Major is in web development technologies</li>
                     </ul>
@@ -120,104 +121,122 @@
      </script>
   </section>
 
- <section id="projects">
+ 
+  <section id="projects">
     <div class="container mt-3">
-        <h3 class="text-center">Projects</h3>
+        <h3 class="text-center text-white">Projects</h3>
         <div class="row">
+
+            <!-- Project 1: Research UI -->
             <div class="col-lg-4 mt-4">
                 <div class="card project-card">
-                    <img class="card-img-top" src="images/CountryFinder.png" alt="Card image" style="width:100%">
+                    <img class="card-img-top" src="images/UI.png" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">User Interface Of Current Research</h4>
+                        <p class="card-text">
+                            This is a client-side UI of a machine vision-based food detection system.
+                            Developed with AI/ML algorithms, React, Python, image processing libraries, sensors, etc.
+                        </p>
+                        <div class="text-center">
+                            <button class="btn btn-success live-link-button" onclick="showAlert()">Live Link</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JavaScript Alert Function -->
+            <script>
+                function showAlert() {
+                    alert("SORRY — this is our ongoing current research project. We can't reveal all the information. The system will not be available for public use as it is going to be one of the patented products.");
+                }
+            </script>
+
+            <!-- Project 2 -->
+            <div class="col-lg-4 mt-4">
+                <div class="card project-card">
+                    <img class="card-img-top" src="images/CountryFinder.png" alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title">Country Finder App</h4>
-                        <p class="card-text">This is a web application completed with React, React Hooks and CSS.
-                            The project displays the countries of World and their detail information.Pagination is
-                             added to display 10 countries per page.</p>
+                        <p class="card-text">
+                            Web application using React, React Hooks, and CSS. Shows countries with pagination (10 per page).
+                        </p>
                         <div class="text-center">
-                            <a href="https://searchthecountry.netlify.app/"class="btn btn-success">Live Link</a>
+                            <a href="https://searchthecountry.netlify.app/" class="btn btn-success live-link-button">Live Link</a>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Project 3 -->
             <div class="col-lg-4 mt-4">
-               <div class="card project-card">
-                    <img class="card-img-top" src="images/OnlineShop.png" alt="Card image" style="width:100%">
+                <div class="card project-card">
+                    <img class="card-img-top" src="images/OnlineShop.png" alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title">Ecommerce Shop</h4>
-                        <p class="card-text">This is a MERN web application completed with React/Node/Express.Clients
-                             can view the products, filter the products and order those.
+                        <p class="card-text">
+                            MERN web app. Clients can view, filter, and order products.
                         </p>
                         <div class="text-center">
-                            <a href="https://onlinetshirtshop.netlify.app/"class="btn btn-success live-link-button">Live Link</a>
+                            <a href="https://onlinetshirtshop.netlify.app/" class="btn btn-success live-link-button">Live Link</a>
                         </div>
                     </div>
                 </div>
             </div>
-           
+
+            <!-- Project 4 -->
             <div class="col-lg-4 mt-4">
-              <div class="card project-card">
-                    <img class="card-img-top" src="images/NationalDigitalRepo.png" alt="Card image" style="width:100%">
+                <div class="card project-card">
+                    <img class="card-img-top" src="images/NationalDigitalRepo.png" alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title">National Digital Repository</h4>
-                        <p class="card-text">This is a part of a web application developed by React,HTML and CSS.
-                            The information can be searched,uploaded and submitted as required.
+                        <p class="card-text">
+                            Part of a React-based system for searching and uploading information.
                         </p>
                         <div class="text-center">
-                            <a href="https://national-digital-repository.netlify.app/"class="btn btn-success live-link-button">Live Link</a>
+                            <a href="https://national-digital-repository.netlify.app/" class="btn btn-success live-link-button">Live Link</a>
                         </div>
                     </div>
                 </div>
             </div>
-        
 
+            <!-- Project 5 -->
             <div class="col-lg-4 mt-4">
-              <div class="card project-card">
-                    <img class="card-img-top" src="images/Library.png" alt="Card image" style="width:100%">
+                <div class="card project-card">
+                    <img class="card-img-top" src="images/Library.png" alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title">Library Management System</h4>
-                        <p class="card-text">This is a desktop application developed with MS Access database, C#,
-                             SQL.The informations can be searched, added and updated as required.</p>
+                        <p class="card-text">
+                            Desktop app using MS Access, C#, and SQL. Allows search, add, and update operations.
+                        </p>
                         <div class="text-center">
-                            <a href="https://github.com/Shyamraja/LibraryManagementSystem"class="btn btn-success live-link-button">Live Link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             
-            <div class="col-lg-4 mt-4">
-                <div class="card project-card">
-                    <img class="card-img-top" src="images/Todo.png" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">Firebase App</h4>
-                        <p class="card-text">This is a web application completed with React and Firebase.</br>
-                            The todos can be added and is seen updated in user's web browser :</p>
-                        <div class="text-center">
-                            <a href="https://todo-app-cp-7ffef.firebaseapp.com/"class="btn btn-success live-link-button ">Live Link</a>
+                            <a href="https://github.com/Shyamraja/LibraryManagementSystem" class="btn btn-success live-link-button">Live Link</a>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Project 6 -->
             <div class="col-lg-4 mt-4">
                 <div class="card project-card">
-                    <img class="card-img-top" src="images/userapp.png" alt="Card image" style="width:100%">
+                    <img class="card-img-top" src="images/userapp.png" alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title">User Info App</h4>
-                        <p class="card-text">This application is a part of assignment which can show the Information 
-                            of users in Card and in details via MORE INFO button as Modal page.
-                        <p>
+                        <p class="card-text">
+                            Assignment app displaying user data in cards and modals via a "More Info" button.
+                        </p>
                         <div class="text-center">
-                            <a href="https://mystifying-tereshkova-7465c2.netlify.app/"class="btn btn-success live-link-button ">Live Link</a>
+                            <a href="https://mystifying-tereshkova-7465c2.netlify.app/" class="btn btn-success live-link-button">Live Link</a>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
-           
-        </div>        
+
+            <!-- Add more cards below if needed -->
+
+        </div>
     </div>
- </section>
+</section>
+
 
  <section id="contact">
     <div class="container">

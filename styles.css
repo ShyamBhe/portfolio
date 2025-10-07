@@ -169,28 +169,55 @@ nav ul li a:hover::after{
 .tab-contents.active-tab ul li{
     display: block;
 }
-#projects{
+#projects {
     margin-top: 5px;
     display: flex;
-    margin: 20 px 0 40px;
-    background-color:black; 
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: black;
+    padding: 20px 0 40px;
 }
 
 .project-card {
-    height: 370px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
-.text-center{
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.text-center {
     display: flex;
     justify-content: center;
-    color: white;
     font-size: 20px;
+    margin-top: 15px;
 }
+
 .live-link-button {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 10px;
 }
+
+.btn-success {
+    white-space: nowrap;
+}
+
 #contact{
     margin-top: 5px;
     background-color:black; 
