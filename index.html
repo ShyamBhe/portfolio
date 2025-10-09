@@ -352,28 +352,37 @@
 
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzGmtx3RXGvTyT6MA6GOY8EJTGb_6xUhUKtr8EJg9ssQZgZBYFXPBnJAEsrR79Xbg5X/exec'
-        const form = document.forms['submit-to-google-sheet']
-        const txt = document.getElementById("txt")
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyMgdh7Dt8TDRNCeL551G9qyl8u8juEueixmOqsfw7nVadgzW9SXsOLyp5z36XlKjhL/exec'
+        const form = document.getElementById('contact-form');
+        const txt = document.getElementById('txt');
 
         form.addEventListener('submit', e => {
-            e.preventDefault()
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => {
-                    txt.innerHTML = "Message sent successfully!"
-                    setTimeout(function () {
-                        txt.innerHTML = ""
-                    }, 5000)
-                    form.reset()
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            formData.append('token', 'Qwerty1234');  // Must match your backend token!
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    txt.textContent = data.message;
+                    if (data.result === 'success') {
+                        form.reset();
+                    }
+                    setTimeout(() => txt.textContent = '', 5000);
                 })
-                .catch(error => console.error('Error!', error.message))
-        })
+                .catch(error => {
+                    console.error('Error!', error);
+                    txt.textContent = 'Oops! Something went wrong.';
+                });
+        });
+
     </script>
 
     <footer class="footer">
         <span>Developed by HTML, CSS, JavaScript, Bootstrap, Google Spread Sheet and FontAwesome Icons.</span>
     </footer>
-
 
 </body>
 
