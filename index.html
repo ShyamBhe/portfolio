@@ -1,303 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shyam Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/54e3ced4d8.js" crossorigin="anonymous"></script>
-  </head>
+</head>
 
 <body>
-          <nav aria-label="navigation menu"> 
-            <img class = "logo"
-             src="images\portfolio.png"alt="logo image"/>
-             <ul id="menubar" role="menubar" aria-label="navigation menu"  style="float:right">
-               <li role="none">
-                <a href="#header" role="menuitem" tabindex="0">Home</a>
-              </li>
-              <li role="none">
-                 <a href="#about" role="menuitem" tabindex="0">About</a>
-               </li>
-               <li role="none">
-                 <a href="#projects" role="menuitem" tabindex="0">Projects</a>
-               </li>
-               <li role="none">
-                  <a href="#contact" role="menuitem" tabindex="0">Contact</a>
-               </li>       
-               <i class="fas fa-times" onclick="closemenu()"></i>
-              </ul>
-               <i class="fas fa-bars" onclick="openmenu()"></i>
-         </nav>
-         <section id="header">
-           <div class="header-text">
-              <p>Passionate IT Engineer</p>
-              <h1>Hello! I am <span> Shyam</span></h1> <br>
-              <h2>I have been working with Agile Software Industry</h2>
-              <p>Welcome to my profile</p>
-           </div>
-         </section>
-     <section id="about">
-   
-         <div class="row">
-            <div class="about-col-1">
-              <img src="images/background.jpg">
-            </div>
-              <div class="about-col-2">
-                     <h2 class="sub-title">About Myself</h2>
-                      <p>I am working as R and D Developer and nearly graduating with a Masters Degree in IT Engineering in the University Of Turku.
-                      </p>
-            
-                    <div class="tab-titles">
-                     <p class="tab-links" onclick="opentab('skills')">Skills</p>
-                     <p class="tab-links" onclick="opentab('experiences')">Experience</p>
-                     <p class="tab-links" onclick="opentab('education')">Education</p>
-                    </div>
+    <nav aria-label="navigation menu">
+        <img class="logo" src="images/portfolio.png" alt="logo image" />
 
-                   <div class="tab-contents active-tab" id="skills">
-                      <ul>
-                        <li><span>Programming languages</span><br>JavaScript,Python</li>
-                        <li><span>Frameworks</span><br>React, Node, FastAPI, Flask, Express,.Net</li>
-                        <li><span>Data Science</span><br>Data Analysis, AI, Machine learning, Deep Learning</li>
-                        <li><span>Agile Methodologies</span><br>Git, Scrum,Jira,Software Development Lifecycle</li>
-                        <li><span>Database Design</span><br>SQL,PostgreSQL,MySQl,MongoDB</li>
-                        <li><span>Knowledgeable and Understandings</span><br>C#,Java, Php, Basic testing,Cloud Technologies:MS Azure/Google Cloud,DevOps methods</br>
-                         Jenkins,DevOps,Linux OS,Power Bi, MS Office,Technical Documentation</li>
-                    </ul>
+        <i class="fas fa-bars" onclick="openmenu()"></i> <!-- Hamburger -->
+
+
+        <ul id="menubar" role="menubar" aria-label="navigation menu">
+            <li><a href="#header" role="menuitem" tabindex="0">Home</a></li>
+            <li><a href="#about" role="menuitem" tabindex="0">About</a></li>
+            <li><a href="#projects" role="menuitem" tabindex="0">Projects</a></li>
+            <li><a href="#contact" role="menuitem" tabindex="0">Contact</a></li>
+            <li><i class="fas fa-times" onclick="closemenu()"></i></li>
+        </ul>
+    </nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menubar = document.getElementById("menubar");
+            const menuIcon = document.querySelector(".fa-bars");
+            const closeIcon = document.querySelector(".fa-times");
+            const menuLinks = menubar.querySelectorAll("a");
+
+            window.openmenu = function () {
+                menubar.style.right = "0";
+                if (menuIcon) menuIcon.style.display = "none";
+                if (closeIcon) closeIcon.style.display = "block";
+            }
+
+            window.closemenu = function () {
+                menubar.style.right = "-250px";
+                if (menuIcon) menuIcon.style.display = "block";
+                if (closeIcon) closeIcon.style.display = "none";
+            }
+            menuLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    closemenu(); // Close the menu on link click
+                });
+            });
+        });
+    </script>
+    <section id="header">
+        <div class="header-text">
+            <p>IT Engineer | AI & ML Enthusiast</p>
+            <h1>Hello! I am <span>Shyam</span></h1>
+            <h2>Working with Software, AI/ML Algorithms, Research And Analysis</h2>
+            <p class="ai-text">
+                "Artificial Intelligence is transforming how the world works — and I believe integrating AI and Machine
+                Learning models into software products brings significant value to both teams and industries."
+            </p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-row">
+            <!-- Left column (Image) -->
+
+            <!-- Right column (Content) -->
+            <div class="about-col-2">
+                <h2 class="sub-title">About Myself</h2>
+                <p class="about-text">
+                    I am working as an R&D Developer and nearly graduating with a Master’s Degree
+                    in IT Engineering at the University of Turku.
+                </p>
+
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">
+                        <i class="fa-solid fa-code"></i> Skills
+                        <i class="fa-solid fa-chevron-down tab-arrow"></i>
+                    </p>
+                    <p class="tab-links" onclick="opentab('experiences')">
+                        <i class="fa-solid fa-briefcase"></i> Experience
+                        <i class="fa-solid fa-chevron-down tab-arrow"></i>
+                    </p>
+                    <p class="tab-links" onclick="opentab('education')">
+                        <i class="fa-solid fa-graduation-cap"></i> Education
+                        <i class="fa-solid fa-chevron-down tab-arrow"></i>
+                    </p>
+
                 </div>
 
-               <div class="tab-contents" id="experiences">
+
+                <!-- Skills Tab -->
+                <div class="tab-contents active-tab" id="skills">
                     <ul>
-                        <li><span>02/2024-Current</span><br>Research Assistant University oF Turku(Advanced Machine Vision System for Food Detection)</br>
-                        Working with AI/ML models, React, Python, FastAPI, Redux, Image Processing Libraries, WebSOckets
+                        <li><span>Programming languages</span><br>JavaScript, Python, TypeScript</li>
+                        <li><span>Frameworks</span><br>React, Redux, Node, FastAPI, Flask, Express, .Net, WebSockets,
+                            Pandas, Numpy, scikit-earn, Matplotlib, Seaborn, PyPl, OpenCV, Pathlib and many others</li>
+                        <li><span>Data Science</span><br>Data Analysis, AI, Machine Learning, Deep Learning, CNN, R-CNN,
+                            LLMs and many others libraries and tools</li>
+                        <li><span>Agile Methodologies and Collaboration Tools</span><br>Git, Scrum, Jira, GitLab, SVN
                         </li>
-                        <li><span>05/2023-Current</span><br>Research and D Summer Project Developer Vaisala(React,C#,.Net,Typescript)</li>
-                        <li><span>05/2021-08/2021</span><br>Research and Development Project Trainee in OAMK(frontend, React)</li>
-                        <li><span>10/2020-01/2021</span><br>Internship in Technological University Dublin's project(Java,Node)</li>
-                        <li><span>11/2019-04/2020</span><br>Software Developer Trainee in PiiMega Oy(SQL,C#,.Net)</li>
+                        <li><span>Database Design and Data Integration tools</span><br>SQL, PostgreSQL, MySQL,
+                            MongoDB,RestAPIs, GraphQL API </li>
+                        <li><span>Research and Analysis</span><br>Google Scholar, PubMed, Zotero , LaTeX</li>
+                        <li><span>Knowledgeable and Better Understandings </span><br> Internet of things, Security,
+                            Networkings, C#, Java, PHP, Testing, Cloud (Azure/GCP), DevOps, Linux OS, Power BI,
+                            Documentation</li>
                     </ul>
                 </div>
 
+                <!-- Experience Tab -->
+                <div class="tab-contents" id="experiences">
+                    <ul>
+                        <li><span>02/2024 - Current</span><br>Research Assistant — University of Turku (Advanced Machine
+                            Vision System)</li>
+                        <li><span>05/2023 - Current</span><br>R&D Summer Project Developer — Vaisala</li>
+                        <li><span>05/2021 - 08/2021</span><br>R&D Project Trainee — OAMK</li>
+                        <li><span>10/2020 - 01/2021</span><br>Internship — Technological University Dublin</li>
+                        <li><span>11/2019 - 04/2020</span><br>Software Developer Trainee — PiiMega Oy</li>
+                    </ul>
+                </div>
+
+                <!-- Education Tab -->
                 <div class="tab-contents" id="education">
                     <ul>
-                        <li><span>University Of Turku(2023-Ongoing)</span><br>Masters in Information Technology Engineering</br>
-                             Majoring in Advanced Software Engineering with Data Science</li>
-                       <li><span>Oulu University Of Applied sciences(2018-2022)</span><br>Bachelor's Degree in Information Technology Engineering</br>
-                             My Major is in web development technologies</li>
+                        <li><span>University of Turku (2023 - Ongoing)</span><br>Master’s in IT Engineering — Advanced
+                            Software Engineering with Data Science</li>
+                        <li><span>Oulu University of Applied Sciences (2018 - 2022)</span><br>Bachelor’s in IT
+                            Engineering — Software Development Technologies with Data Science</li>
                     </ul>
                 </div>
             </div>
-        
-         </div>   
-     <script>
-       var tablinks = document.getElementsByClassName("tab-links");
-       var tabcontents = document.getElementsByClassName("tab-contents");
-
-       function opentab(tabname){
-          for(tablink of tablinks){
-              tablink.classList.remove("active-link");
-          }
-           for(tabcontent of tabcontents){
-            tabcontent.classList.remove("active-tab");
-          }
-           event.currentTarget.classList.add("active-link");
-          document.getElementById(tabname).classList.add("active-tab");
-           }  
-     </script>
-
-     <script>
-        var sidemenu = document.getElementById("sidemenu");
-        function openmenu(){
-            sidemenu.style.right = "0";
-        }
-        function closemenu(){
-            sidemenu.style.right = "-200px";
-        }
-     </script>
-  </section>
-
- 
-  <section id="projects">
-    <div class="container mt-3">
-        <h3 class="text-center text-white">Projects</h3>
-        <div class="row">
-
-            <!-- Project 1: Research UI -->
-            <div class="col-lg-4 mt-4">
-                <div class="card project-card">
-                    <img class="card-img-top" src="images/UI.png" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">User Interface Of Current Research</h4>
-                        <p class="card-text">
-                            This is a client-side UI of a machine vision-based food detection system.
-                            Developed with AI/ML algorithms, React, Python, image processing libraries, sensors, etc.
-                        </p>
-                        <div class="text-center">
-                            <button class="btn btn-success live-link-button" onclick="showAlert()">Live Link</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- JavaScript Alert Function -->
-            <script>
-                function showAlert() {
-                    alert("SORRY — this is our ongoing current research project. We can't reveal all the information. The system will not be available for public use as it is going to be one of the patented products.");
-                }
-            </script>
-
-            <!-- Project 2 -->
-            <div class="col-lg-4 mt-4">
-                <div class="card project-card">
-                    <img class="card-img-top" src="images/CountryFinder.png" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Country Finder App</h4>
-                        <p class="card-text">
-                            Web application using React, React Hooks, and CSS. Shows countries with pagination (10 per page).
-                        </p>
-                        <div class="text-center">
-                            <a href="https://searchthecountry.netlify.app/" class="btn btn-success live-link-button">Live Link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="col-lg-4 mt-4">
-                <div class="card project-card">
-                    <img class="card-img-top" src="images/OnlineShop.png" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Ecommerce Shop</h4>
-                        <p class="card-text">
-                            MERN web app. Clients can view, filter, and order products.
-                        </p>
-                        <div class="text-center">
-                            <a href="https://onlinetshirtshop.netlify.app/" class="btn btn-success live-link-button">Live Link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="col-lg-4 mt-4">
-                <div class="card project-card">
-                    <img class="card-img-top" src="images/NationalDigitalRepo.png" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">National Digital Repository</h4>
-                        <p class="card-text">
-                            Part of a React-based system for searching and uploading information.
-                        </p>
-                        <div class="text-center">
-                            <a href="https://national-digital-repository.netlify.app/" class="btn btn-success live-link-button">Live Link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="col-lg-4 mt-4">
-                <div class="card project-card">
-                    <img class="card-img-top" src="images/Library.png" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Library Management System</h4>
-                        <p class="card-text">
-                            Desktop app using MS Access, C#, and SQL. Allows search, add, and update operations.
-                        </p>
-                        <div class="text-center">
-                            <a href="https://github.com/Shyamraja/LibraryManagementSystem" class="btn btn-success live-link-button">Live Link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="col-lg-4 mt-4">
-                <div class="card project-card">
-                    <img class="card-img-top" src="images/userapp.png" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">User Info App</h4>
-                        <p class="card-text">
-                            Assignment app displaying user data in cards and modals via a "More Info" button.
-                        </p>
-                        <div class="text-center">
-                            <a href="https://mystifying-tereshkova-7465c2.netlify.app/" class="btn btn-success live-link-button">Live Link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Add more cards below if needed -->
-
         </div>
-    </div>
-</section>
-
-
- <section id="contact">
-    <div class="container">
-        <h5 class="text">Contact Me</h5>
-        <div class="row">
-            <div class="content-left">
-                <h6 class="title">Contact Info</h6>
-                <p><i class="far fa-envelope-open"></i>rsambhetwal@gmail.com</p>
-                <p><i class="fas fa-phone-square-alt"></i>04535888</p>
-                <div class="social-icons">
-                    <p>Github and Linkedin</p>
-                    <a href="https://github.com/Shyamraja"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/rshyamvetwal/"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-                <a href="images/.CV-Shyam.pdf" download class="btn btn-primary" id="download-cv-button">Download CV</a>
-                  <p id="download-cv-message"></p>
-
-                   <script>
-                    document.getElementById("download-cv-button").addEventListener("click", function() {
-                    document.getElementById("download-cv-message").textContent = "CV is already submitted to you.";
-                   });
-                 </script>
-                
-            </div>
-            <div class="content-right">
-               <form name ="submit-to-google-sheet">
-                  <input type="text" name="fullname" placeholder="FullName" required>
-                  <input type="email" name="email" placeholder="Email" required>
-                  
-                  <textarea name="message" rows="6" placeholder="Message"></textarea>
-                  <button type="submit" class="btn btn-primary">Send Message</button>  
-                </form>
-                <span id="txt"></span>
-            </div>
-        </div>
-    </div>          
- </section>
-
 
         <script>
-          const scriptURL = 'https://script.google.com/macros/s/AKfycbzGmtx3RXGvTyT6MA6GOY8EJTGb_6xUhUKtr8EJg9ssQZgZBYFXPBnJAEsrR79Xbg5X/exec'
-          const form = document.forms['submit-to-google-sheet']
-          const txt = document.getElementById("txt")
+            const tablinks = document.getElementsByClassName("tab-links");
+            const tabcontents = document.getElementsByClassName("tab-contents");
 
-          form.addEventListener('submit', e => {
-           e.preventDefault()
-             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-              .then(response => {
-                 txt.innerHTML = "Message sent successfully!"
-                 setTimeout (function (){
-                    txt.innerHTML = ""
-                 },5000)
-                 form.reset()
-                })
-              .catch(error => console.error('Error!', error.message))
-           })
+            function opentab(tabname) {
+                for (let tablink of tablinks) {
+                    tablink.classList.remove("active-link");
+                }
+                for (let tabcontent of tabcontents) {
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
         </script>
-    
-    <div class="footer">
-       <span>Developed by HTML,CSS,JavaScript,Bootstrap,Google Spread Sheet and Fontawesome Icons.</span>
-    </div>
+    </section>
+
+
+    <section id="projects">
+        <div class="container mt-3">
+            <h2 class="sub-title">Projects</h2>
+            <h2 class="text-center text-white"></h2>
+            <div class="row">
+
+                <!-- Project 1: Research UI -->
+                <div class="col-lg-4 mt-4">
+                    <div class="card project-card">
+                        <img class="card-img-top" src="images/systems.JPG" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">Machine Vision System</h4>
+                            <p class="card-text">
+                                This is my current Work machine vision-based food detection system for analysis of
+                                accuracy of food detection and correction.
+                                Developed with AI/ML algorithms, React, Python, image processing libraries, sensors and
+                                more.
+                            </p>
+                            <div class="text-center">
+                                <button class="btn btn-success live-link-button" onclick="showAlert()">Live
+                                    Link</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JavaScript Alert Function -->
+                <script>
+                    function showAlert() {
+                        alert("SORRY — this is our ongoing current research project. We can't reveal all the information. The system will not be available for public use as it is going to be one of the patented products.More research is going on with AI based versatile models, multimodal data integration and other approaches so");
+                    }
+                </script>
+
+                <!-- Project 2 -->
+                <div class="col-lg-4 mt-4">
+                    <div class="card project-card">
+                        <img class="card-img-top" src="images/AIMODELUIDemo.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title"> AI Based Mental Health Care System</h4>
+                            <p class="card-text">
+                                This is a recently started AI assisted Research Project Ongoing to cure mental health
+                                problems of patients and platform for booking with specialists.
+                            </p>
+                            <div class="text-center">
+                                <button class="btn btn-success live-link-button" onclick="showAlert()">Live
+                                    Link</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4 mt-4">
+                    <div class="card project-card">
+                        <img class="card-img-top" src="images/OnlineShop.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">Ecommerce Shop</h4>
+                            <p class="card-text">
+                                MERN web app. Clients can view, filter, and order products.Clients can get the products
+                                to their address after confirming order.
+                                This is a part of similar client project so I can't reveal all the features.
+                            </p>
+                            <div class="text-center">
+                                <a href="https://onlinetshirtshop.netlify.app/"
+                                    class="btn btn-success live-link-button">Live Link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-lg-4 mt-4">
+                    <div class="card project-card">
+                        <img class="card-img-top" src="images/NationalDigitalRepo.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">National Digital Repository</h4>
+                            <p class="card-text">
+                                This is preliminary UI developed for an educational project for searching and uploading
+                                the thesis information from students as required.
+                                The project was a part of R and D project.
+                            </p>
+                            <div class="text-center">
+                                <a href="https://national-digital-repository.netlify.app/"
+                                    class="btn btn-success live-link-button">Live Link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="col-lg-4 mt-4">
+                    <div class="card project-card">
+                        <img class="card-img-top" src="images/Library.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">Library Management System</h4>
+                            <p class="card-text">
+                                Desktop application developed using MS Access DB, C#, and SQL. Allows Librarians and
+                                users Login search, add, and update the library operations smoothly.
+                                Digitalization of Library operation was possible.
+                            </p>
+                            <div class="text-center">
+                                <a href="https://github.com/Shyamraja/LibraryManagementSystem"
+                                    class="btn btn-success live-link-button">Live Link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="col-lg-4 mt-4">
+                    <div class="card project-card">
+                        <img class="card-img-top" src="images/CountryFinder.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">Country Finder App</h4>
+                            <p class="card-text">
+                                This is a simple Web application using React, React Hooks, and CSS. Shows countries with
+                                their detailed information.
+                            </p>
+                            <div class="text-center">
+                                <a href="https://searchthecountry.netlify.app/"
+                                    class="btn btn-success live-link-button">Live Link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <div class="container">
+            <h3 class="text-center text-white">Contact Me</h3>
+            <div class="contact-container">
+                <div class="content-left">
+                    <h6 class="title">Contact Info</h6>
+                    <p><i class="far fa-envelope-open"></i>shyambhetuwal254@gmail.com</p>
+                    <p><i class="fas fa-phone-square-alt"></i>04535888</p>
+                    <div class="social-icons">
+                        <p>Github and Linkedin</p>
+                        <a href="https://github.com/Shyamraja"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://github.com/ShyamBhe" target="_blank">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rshyamvetwal/"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <a href="#" class="btn btn-primary" id="request-cv-button">
+                        Request CV
+                    </a>
+
+                    <p id="request-cv-message" style="margin-top: 10px; color: lightgreen;"></p>
+
+                    <script>
+                        const requestBtn = document.getElementById("request-cv-button");
+                        const messageBox = document.getElementById("request-cv-message");
+
+                        requestBtn.addEventListener("click", function (e) {
+                            e.preventDefault(); // Stop the link from navigating immediately
+
+                            const confirmed = confirm("Do you want to request my CV via email?");
+
+                            if (confirmed) {
+                                // Open the user's default mail client with a pre-filled message
+                                window.location.href = "mailto:shyambhetuwal254@gmail.com?subject=Requesting%20Your%20CV&body=Hi Shyam,%0D%0A%0D%0AI would like to request a copy of your CV.%0D%0AThank you!";
+
+                                // Show success message
+                                messageBox.textContent = "Thanks for your interest! Your email app will open to request my CV.";
+                            } else {
+                                // Show friendly message for cancelling
+                                messageBox.textContent = "No problem! You can request if you need anytime later also.";
+                            }
+
+                            // Clear the message after 3 seconds
+                            setTimeout(() => {
+                                messageBox.textContent = "";
+                            }, 6000);
+                        });
+                    </script>
+
+                </div>
+                <div class="content-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="fullname" placeholder="FullName" required>
+                        <input type="email" name="email" placeholder="Email" required>
+
+                        <textarea name="message" rows="6" placeholder="Message"></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                    <span id="txt"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzGmtx3RXGvTyT6MA6GOY8EJTGb_6xUhUKtr8EJg9ssQZgZBYFXPBnJAEsrR79Xbg5X/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const txt = document.getElementById("txt")
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    txt.innerHTML = "Message sent successfully!"
+                    setTimeout(function () {
+                        txt.innerHTML = ""
+                    }, 5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
+    <footer class="footer">
+        <span>Developed by HTML, CSS, JavaScript, Bootstrap, Google Spread Sheet and FontAwesome Icons.</span>
+    </footer>
+
 
 </body>
+
 </html>
