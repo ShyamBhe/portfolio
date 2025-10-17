@@ -93,7 +93,7 @@ nav ul li a:hover i {
     background-color: black;
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    height: 98vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,9 +126,9 @@ nav ul li a:hover i {
     margin-bottom: 20px;
 }
 
-.header-text .ai-text {
+.header-text .profile-text {
     color: #ddd;
-    font-size: 20px;
+    font-size: 25px;
     line-height: 1.6;
     max-width: 700px;
     margin: 20px auto 0 auto;
@@ -168,10 +168,9 @@ nav ul li a:hover i {
 .about-text {
     max-width: 700px;
     margin: 20px auto;
-    font-size: 18px;
+    font-size: 21px;
     line-height: 1.6;
     color: #dddddd;
-    /* Light gray for better contrast on black */
     text-align: center;
     padding: 0 20px;
 }
@@ -191,12 +190,13 @@ nav ul li a:hover i {
 .tab-links i {
     margin-right: 10px;
     font-size: 24px;
-    color: #ff004f;
-    transition: transform 0.3s ease, color 0.3s ease;
+    color: white;
+    transition: color 0.4s;
 }
 
 .tab-links:hover {
-    color: #ff004f;
+    color: blue;
+    transition: color 0.4s;
 }
 
 .tab-links::after {
@@ -207,11 +207,11 @@ nav ul li a:hover i {
     position: absolute;
     left: 0;
     bottom: -10px;
-    transition: 0.5s;
+    transition: color 0.4s;
 }
 
 .tab-links .tab-arrow {
-    font-size: 16px;
+    font-size: 20px;
     margin-left: 5px;
     transition: transform 0.3s ease, color 0.3s ease;
     color: #ccc;
@@ -223,22 +223,22 @@ nav ul li a:hover i {
 
 .tab-links.active-link .tab-arrow {
     transform: rotate(180deg);
-    /* arrow rotates down/up */
     color: #ff004f;
 }
 
 .tab-links:hover i {
     transform: translateX(5px);
     color: #ff3366;
+    transition: color 0.4s;
 }
 
 .tab-links.active-link i:first-child {
-    color: #ff004f;
+    color: white;
     transform: translateX(3px);
 }
 
 .tab-links.active-link::after {
-    width: 100%;
+    width: 50%;
 }
 
 .tab-links.active-link {
@@ -246,7 +246,7 @@ nav ul li a:hover i {
 }
 
 .tab-contents {
-    font-size: 15px;
+    font-size: 20px;
     display: none;
 }
 
@@ -269,7 +269,7 @@ nav ul li a:hover i {
 
 .tab-contents ul li span {
     color: #b54769;
-    font-size: 19px;
+    font-size: 22px;
     margin-left: 0;
 }
 
@@ -477,6 +477,12 @@ nav .fas {
         font-size: 28px;
         color: white;
         cursor: pointer;
+    }
+
+    .logo {
+        height: 4vh;
+        width: auto;
+        margin: 0;
     }
 
     #menubar {
