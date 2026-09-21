@@ -509,37 +509,16 @@
 		</section>
 
 		<script>
-			// Contact form -> Netlify Forms (works on the deployed Netlify site)
-			const form = document.getElementById("contact-form");
-			const txt = document.getElementById("txt");
-			const submitBtn = form.querySelector('button[type="submit"]');
+	     const form = document.getElementById("contact-form");
+	     const txt = document.getElementById("txt");
+	     const submitBtn = form.querySelector('button[type="submit"]');
 
-			form.addEventListener("submit", (e) => {
-				e.preventDefault();
-
-				submitBtn.disabled = true;
-				txt.textContent = "Sending...";
-
-				fetch("/", {
-					method: "POST",
-					headers: { "Content-Type": "application/x-www-form-urlencoded" },
-					body: new URLSearchParams(new FormData(form)).toString(),
-				})
-					.then((response) => {
-						if (!response.ok) throw new Error("Status " + response.status);
-						txt.textContent = "Thanks! Your message was sent.";
-						form.reset();
-					})
-					.catch((error) => {
-						console.error("Error!", error);
-						txt.textContent = "Oops! Something went wrong. Please try again.";
-					})
-					.finally(() => {
-						submitBtn.disabled = false;
-						setTimeout(() => (txt.textContent = ""), 5000);
-					});
-			});
-		</script>
+	    form.addEventListener("submit", function () {
+		submitBtn.disabled = true;
+		submitBtn.textContent = "Sending...";
+		txt.textContent = "Sending...";
+	    });
+        </script>
 
 		<footer class="footer">
 			<span>Personal data presented in this profile is protected and handled in accordance with European data protection laws (GDPR)</span
