@@ -403,8 +403,8 @@ nav ul li a:hover i {
 .header-text p {
     color: whitesmoke;
     margin: 5px 0;
-    margin-top: 50px;
-    font-size: 20px;
+    margin-top: 18px;
+    font-size: 30px;
 }
 
 .header-text h1 {
@@ -423,14 +423,15 @@ nav ul li a:hover i {
     font-size: 40px;
     margin: 10px 0;
     color: white;
+     margin-top: 10px;
     margin-bottom: 20px;
 }
 
 .header-text .profile-text {
     color: #ddd;
     font-size: 25px;
-    line-height: 1.6;
-    max-width: 700px;
+    line-height: 1.8;
+    max-width: 1200px;
     margin: 20px auto 0 auto;
     padding: 0 15px;
     text-align: center;
