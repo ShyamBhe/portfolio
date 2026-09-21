@@ -77,13 +77,13 @@
 		</script>
 		<section id="header">
 			<div class="header-text">
-				<p>AI and Software Engineer | Building Multimodal & Enterprise AI Systems | Responsible AI | Technical Consulting</p>
+				<p>AI and Software Engineer Building Responsible, Multimodal & Enterprise AI Systems | Developer | Advanced AI Researcher | Technical Consultant </p>
 				<h1>Hello! I am <span>Shyam</span></h1>
 				<h2>I have been Living in Finland for 8 years and Working with Software, AI/ML Algorithms, Research And Development</h2>
 				<p class="profile-text">
-					"I believe Artificial Intelligence has completely transformed how the world works. 
-					 I research and build the complex intelligent systems that brings most effective AI and Machine Learning into real-world systems. 
-					 I have proven competancy in turning research and emerging technologies into very practical solutions
+					"I believe rapid advances in Artificial Intelligence has completely transformed how the technology should work. 
+					 I have been researching and building the complex intelligent systems that brings most effective AI and Machine Learning modals into real-world systems. 
+					 I have proven competancy in turning research and emerging ideas into practical solutions
 					 for the teams, universities, and industries."
 				</p>
 			</div>
@@ -473,11 +473,23 @@
 						</script>
 					</div>
 					<div class="content-right">
-						<form id="contact-form" name="submit-to-google-sheet">
+						<!-- Contact form: handled by Netlify Forms -->
+						<form
+							id="contact-form"
+							name="contact"
+							method="POST"
+							data-netlify="true"
+							netlify-honeypot="bot-field"
+						>
+							<input type="hidden" name="form-name" value="contact" />
+							<p hidden>
+								<label>Don't fill this out: <input name="bot-field" /></label>
+							</p>
+
 							<input
 								type="text"
-								name="fullname"
-								placeholder="FullName"
+								name="name"
+								placeholder="Full Name"
 								required
 							/>
 							<input type="email" name="email" placeholder="Email" required />
@@ -486,6 +498,7 @@
 								name="message"
 								rows="6"
 								placeholder="Message"
+								required
 							></textarea>
 							<button type="submit" class="btn btn-primary">Send Email</button>
 						</form>
@@ -496,37 +509,40 @@
 		</section>
 
 		<script>
-			const scriptURL =
-				"https://script.google.com/macros/s/AKfycbyMgdh7Dt8TDRNCeL551G9qyl8u8juEueixmOqsfw7nVadgzW9SXsOLyp5z36XlKjhL/exec";
+			// Contact form -> Netlify Forms (works on the deployed Netlify site)
 			const form = document.getElementById("contact-form");
 			const txt = document.getElementById("txt");
+			const submitBtn = form.querySelector('button[type="submit"]');
 
 			form.addEventListener("submit", (e) => {
 				e.preventDefault();
 
-				const formData = new FormData(form);
-				formData.append("token", "Qwerty1234");
+				submitBtn.disabled = true;
+				txt.textContent = "Sending...";
 
-				fetch(scriptURL, { method: "POST", body: formData })
-					.then((response) => response.json())
-					.then((data) => {
-						txt.textContent = data.message;
-						if (data.result === "success") {
-							form.reset();
-						}
-						setTimeout(() => (txt.textContent = ""), 5000);
+				fetch("/", {
+					method: "POST",
+					headers: { "Content-Type": "application/x-www-form-urlencoded" },
+					body: new URLSearchParams(new FormData(form)).toString(),
+				})
+					.then((response) => {
+						if (!response.ok) throw new Error("Status " + response.status);
+						txt.textContent = "Thanks! Your message was sent.";
+						form.reset();
 					})
 					.catch((error) => {
 						console.error("Error!", error);
-						txt.textContent = "Oops! Something went wrong.";
+						txt.textContent = "Oops! Something went wrong. Please try again.";
+					})
+					.finally(() => {
+						submitBtn.disabled = false;
+						setTimeout(() => (txt.textContent = ""), 5000);
 					});
 			});
 		</script>
 
 		<footer class="footer">
-			<span
-				>Developed by plain HTML, CSS, JavaScript, Bootstrap, Google Spread
-				Sheet and FontAwesome Icons.</span
+			<span>Personal data presented in this profile is protected and handled in accordance with European data protection laws (GDPR)</span
 			>
 		</footer>
 	</body>
