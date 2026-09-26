@@ -653,6 +653,223 @@ nav ul li a:hover i {
     white-space: nowrap;
 }
 
+/* ---------------- PUBLICATIONS ---------------- */
+#publications {
+
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)
+    ), url('images/ImageBackground.png');
+
+    margin-top: 5px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    background-color: black;
+
+    padding: 20px 0 40px;
+
+    text-align: center;
+
+}
+
+.publication-card {
+
+    position: relative;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background-color: #fff;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    margin-bottom: 20px;
+
+}
+
+/* Same animated network effect as project cards */
+
+.publication-card::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 230px;
+
+    pointer-events: none;
+
+    background-image:
+
+        radial-gradient(
+            circle at 15% 22%,
+            rgba(255,255,255,0.9) 2px,
+            transparent 8px
+        ),
+
+        radial-gradient(
+            circle at 38% 48%,
+            rgba(255,255,255,0.75) 2px,
+            transparent 10px
+        ),
+
+        radial-gradient(
+            circle at 72% 18%,
+            rgba(255,255,255,0.7) 2px,
+            transparent 8px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            30deg,
+            rgba(255,255,255,.12) 1px,
+            transparent 1px
+        );
+
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        repeat,
+        repeat,
+        repeat;
+
+    background-size:
+        6% 6%,
+        7% 7%,
+        5% 5%,
+        140px 140px,
+        140px 140px,
+        180px 180px;
+
+    background-position:
+        15% 22%,
+        38% 48%,
+        72% 18%,
+        0 0,
+        0 0,
+        0 0;
+
+    opacity: 0.55;
+
+    animation:
+        screenNetwork 16s linear infinite,
+        starBlink 3.7s ease-in-out infinite alternate;
+
+    mix-blend-mode: screen;
+
+}
+
+/* Publication content */
+
+.publication-card .card-body {
+
+    height: 100%;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 15px;
+
+}
+
+/* Publication type */
+
+.publication-card .pub-type {
+
+    display: block;
+
+    color: #555;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.03em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+
+    text-align: left;
+
+}
+
+/* Publication title */
+
+.publication-card .card-title {
+
+    color: #222;
+
+    font-size: 19px;
+
+    text-align: left;
+
+    margin-bottom: 10px;
+
+}
+
+/* Publication description */
+
+.publication-card .card-text {
+
+    color: #555;
+
+    text-align: left;
+
+    line-height: 1.5;
+
+}
+
+/* Publication links/buttons */
+
+.publication-card .live-link-button {
+
+    margin-top: 5px;
+
+}
+
+/* Keep buttons from wrapping */
+
+.publication-card .btn-success {
+
+    white-space: nowrap;
+
+}
+
 #contact {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ImageBackground.png');
     margin-top: 5px;
