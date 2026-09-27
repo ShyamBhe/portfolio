@@ -19,6 +19,14 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Nav is position: fixed, so anchor jumps (#header, #about, #projects,
+   #publications, #contact) would otherwise land with their top edge
+   hidden behind the nav bar. This offsets the scroll target down by
+   roughly the nav's height. */
+section[id] {
+    scroll-margin-top: 90px;
+}
+
 body {
     background-color: rgb(31, 10, 10);
     margin: 0;
@@ -117,6 +125,27 @@ nav ul li a:hover i {
     color: #ff004f;
 }
 
+/* Nav active-state (current section in view). Reuses the same
+   underline mechanism as the existing hover rule above. */
+#menubar li a.active::after {
+    width: 100%;
+    background: #9acd32;
+}
+
+#menubar li a.active i {
+    color: #9acd32;
+}
+
+/* Hide the mobile hamburger icon at desktop widths. It has no
+   explicit "hidden" state outside the mobile media query below,
+   so without this it stays visible next to the full desktop nav.
+   Aligned to the same 800px breakpoint the mobile query uses. */
+@media (min-width: 801px) {
+    nav .fa-bars {
+        display: none;
+    }
+}
+
 /* ---------------- HEADER ---------------- */
 #header {
     position: relative;
@@ -180,6 +209,10 @@ nav ul li a:hover i {
     opacity:.35;
 
     z-index:2;
+
+    /* Purely decorative — must not intercept clicks meant for the
+       hero content underneath it (this covers the CTA buttons). */
+    pointer-events:none;
 }
 
 #header::after{
@@ -207,6 +240,9 @@ nav ul li a:hover i {
     opacity:.35;
 
     z-index:2;
+
+    /* Same reason as #header::before above. */
+    pointer-events:none;
 }
 
 /* floating particles */
@@ -400,6 +436,11 @@ nav ul li a:hover i {
     }
 }
 
+.header-text {
+    position: relative;
+    z-index: 5;
+}
+
 .header-text p {
     color: whitesmoke;
     margin: 5px 0;
@@ -437,6 +478,60 @@ nav ul li a:hover i {
     text-align: center;
     font-weight: 400;
     margin-top: 30px;
+}
+
+/* --- Hero redesign additions: eyebrow, tag row, CTAs, proof row, location --- */
+
+.header-text .eyebrow {
+    font-size: 22px;
+    font-weight: 500;
+    color: whitesmoke;
+    margin-bottom: 6px;
+}
+
+/* Reuses the existing h1 span accent color for the name */
+.header-text .eyebrow span {
+    color: yellowgreen;
+}
+
+.header-text .tag-row {
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    color: #ddd;
+    opacity: 0.8;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.header-text .location-line {
+    font-size: 16px;
+    color: #ddd;
+    opacity: 0.65;
+    margin-top: 15px;
+}
+
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.proof-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    font-size: 16px;
+    color: #ddd;
+    margin-top: 20px;
+}
+
+.proof-row span:not(:last-child)::after {
+    content: '|';
+    margin-left: 20px;
+    opacity: 0.4;
 }
 
 #about {
@@ -1182,6 +1277,31 @@ nav .fas {
 
     .header-text p {
         font-size: 14px;
+    }
+
+    .header-text .eyebrow {
+        font-size: 16px;
+    }
+
+    .header-text .tag-row {
+        font-size: 13px;
+    }
+
+    .header-text .location-line {
+        font-size: 12px;
+    }
+
+    .proof-row {
+        font-size: 13px;
+        gap: 6px 14px;
+    }
+
+    .proof-row span:not(:last-child)::after {
+        margin-left: 14px;
+    }
+
+    .cta-row {
+        gap: 10px;
     }
 
     .about-col-1,

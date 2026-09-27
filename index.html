@@ -73,23 +73,68 @@
           closemenu(); // Close the menu on link click
         });
       });
+
+      // Highlight the nav link for the section currently in view
+      const sections = Array.from(
+        document.querySelectorAll("section[id]"),
+      );
+      const navLinks = Array.from(menubar.querySelectorAll("a[href^='#']"));
+
+      function setActiveLink() {
+        let currentId = sections[0]?.id;
+        const scrollPos = window.scrollY + window.innerHeight * 0.3;
+
+        for (const section of sections) {
+          if (section.offsetTop <= scrollPos) {
+            currentId = section.id;
+          }
+        }
+
+        navLinks.forEach((link) => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${currentId}`,
+          );
+        });
+      }
+
+      window.addEventListener("scroll", setActiveLink);
+      setActiveLink();
     });
   </script>
   <section id="header">
     <div class="header-text">
-      <h1>Hello! I am <span>Shyam</span></h1>
+      <p class="eyebrow">Hi, I'm <span>Shyam</span></p>
+      <h1>AI &amp; Software Engineer</h1>
       <h2>
-        I am an AI and Software Engineer/Developer Building Responsible, Multimodal & Enterprise
-        AI Systems and have been living in Finland for 8 years.
+        Building multimodal AI, full-stack software, and intelligent systems for real-world applications.
       </h2>
-      <p class="profile-text">
-        "Rapid advances in Artificial Intelligence has completely
-        transformed how the technology should work. I have been researching
-        and building the complex intelligent systems that brings
-        AI and Machine Learning modals as required into real-world systems. I
-        have proven competency in turning challenging and emerging ideas into
-        practical Responsible AI solutions for the teams, universities, and industries."
+      <p class="tag-row">
+        AI Research &bull; Software Engineering &bull; Multimodal AI &bull; Computer Vision &bull; AIoT
       </p>
+      <p class="profile-text">
+        I research and build intelligent software systems that bring AI and machine learning
+        into real-world applications. My work combines software engineering, multimodal AI,
+        computer vision, data, and sensor-driven systems to turn complex research ideas into
+        practical solutions.
+      </p>
+
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-success live-link-button">View Projects</a>
+        <a href="#contact" id="hero-cv-button" class="btn btn-outline-light live-link-button">Request CV</a>
+        <a href="#contact" class="btn btn-outline-light live-link-button">Contact Me</a>
+      </div>
+
+      <div class="proof-row">
+        <span>Multimodal AI</span>
+        <span>Computer Vision</span>
+        <span>AIoT Systems</span>
+        <span>Full-Stack</span>
+        <span>Applied Research</span>
+        <span>3+ Publications</span>
+      </div>
+
+      <p class="location-line">Helsinki, Finland &middot; 8 years in Finland</p>
     </div>
 
     <div class="particles"></div>
@@ -513,8 +558,9 @@
           <script>
             const requestBtn = document.getElementById("request-cv-button");
             const messageBox = document.getElementById("request-cv-message");
+            const heroCvBtn = document.getElementById("hero-cv-button");
 
-            requestBtn.addEventListener("click", function (e) {
+            function requestCv(e) {
               e.preventDefault();
 
               const confirmed = confirm(
@@ -535,7 +581,12 @@
               setTimeout(() => {
                 messageBox.textContent = "";
               }, 6000);
-            });
+            }
+
+            requestBtn.addEventListener("click", requestCv);
+            if (heroCvBtn) {
+              heroCvBtn.addEventListener("click", requestCv);
+            }
           </script>
         </div>
         <div class="content-right">
