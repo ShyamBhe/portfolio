@@ -869,6 +869,78 @@ nav ul li a:hover i {
     white-space: nowrap;
 
 }
+.project-card,
+.publication-card {
+    position: relative;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Card hover */
+.project-card:hover,
+.publication-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        0 0 18px rgba(0, 123, 255, 0.18);
+
+    border-color: rgba(0, 123, 255, 0.35);
+}
+
+/* Project image gently enlarges */
+.project-card .card-img-top {
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .card-img-top {
+    transform: scale(1.03);
+}
+
+/* More Info / buttons */
+.project-card .btn,
+.publication-card .btn {
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Button gets slightly more depth when card is hovered */
+.project-card:hover .btn,
+.publication-card:hover .btn {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Actual button hover */
+.project-card .btn:hover,
+.publication-card .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .project-card,
+    .publication-card,
+    .project-card .card-img-top,
+    .project-card .btn,
+    .publication-card .btn {
+        transition: none;
+    }
+
+    .project-card:hover,
+    .publication-card:hover,
+    .project-card:hover .card-img-top,
+    .project-card .btn:hover,
+    .publication-card .btn:hover {
+        transform: none;
+    }
+}
 
 #contact {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ImageBackground.png');
@@ -915,33 +987,71 @@ nav ul li a:hover i {
     color: green;
 }
 
+.content-left p i {
+    color: lightblue;
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+.content-left p:hover {
+    color: green;
+}
+
+/* Primary CTA — kept visually distinct as the strongest call to action */
 .btn.btn-primary {
-    background: lightgreen;
+    background: #2ecc71;
+    border: none;
+    color: #06210f;
+    font-weight: 600;
     margin-top: 25px;
     padding: 13px 55px;
     cursor: pointer;
     font-size: 18px;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(46, 204, 113, 0.35);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn:hover {
-    background-color: lightBlue;
+.btn.btn-primary:hover {
+    background-color: #58d68d;
+    transform: translateY(-2px);
 }
 
 .social-icons {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 25px;
+}
+
+.social-icons p {
+    width: 100%;
+    margin-top: 0;
 }
 
 .social-icons a {
     font-size: 20px;
-    margin-left: 35px;
+    margin-left: 0;
     color: lightblue;
-    display: inline-block;
-    transition: transform 0.5s;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: green;
+    color: #58d68d;
+    transform: translateY(-2px);
 }
+
+.icon-label {
+    font-size: 11px;
+    color: #aaa;
+    letter-spacing: 0.02em;
+}
+
 
 .content-right form {
     width: 100%;
