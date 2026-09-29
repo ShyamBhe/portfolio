@@ -8,9 +8,8 @@ export default function Publications() {
           Publications Based on My Research and Development work
         </h2>
         <p className="about-text">
-          Selected research output from my AIoT and machine-vision work at
-          the University of Turku. Full text linked where publicly
-          available.
+          Selected research output from my AIoT and machine-vision work at the
+          University of Turku. Full text linked where publicly available.
         </p>
         <div className="row">
           {publications.map((pub) => (
