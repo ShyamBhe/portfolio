@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { contact } from "../data.js";
 
 function encodeFormData(data) {
@@ -37,23 +38,23 @@ export default function Contact({ cvMessage, onRequestCv }) {
   }
 
   return (
-    <section id="contact">
-      <div className="container">
-        <h3 className="text-center text-white">Contact Me</h3>
-        <div className="contact-container">
-          <div className="content-left">
-            <h6 className="title">Contact Info</h6>
-            <p>
+    <section id="contact" className="page-section">
+      <Container>
+        <h3 className="mb-4">Contact Me</h3>
+        <Row className="g-4 text-start">
+          <Col md={5}>
+            <h6 className="mb-3">Contact Info</h6>
+            <p className="contact-line">
               <i className="far fa-envelope-open"></i>
               {contact.email}
             </p>
-            <p>
+            <p className="contact-line">
               <i className="fas fa-phone-square-alt"></i>
               {contact.phone}
             </p>
 
             <div className="social-icons">
-              <p>GitHub &amp; LinkedIn</p>
+              <p className="w-100 mb-0">GitHub &amp; LinkedIn</p>
               <a
                 href={contact.githubPrimary.url}
                 target="_blank"
@@ -78,24 +79,28 @@ export default function Contact({ cvMessage, onRequestCv }) {
               </a>
             </div>
 
-            <a href="#" className="btn btn-primary" onClick={onRequestCv}>
+            <Button href="#" variant="success" className="mt-4 px-4" onClick={onRequestCv}>
               Request CV
-            </a>
+            </Button>
+            <p className="text-success mt-2">{cvMessage}</p>
+          </Col>
 
-            <p style={{ marginTop: "10px", color: "lightgreen" }}>{cvMessage}</p>
-          </div>
-
-          <div className="content-right">
-            <form name="contact" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
+          <Col md={7}>
+            <Form
+              name="contact"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+            >
               <input type="hidden" name="form-name" value="contact" />
               <p hidden>
                 <label>
-                  Don&apos;t fill this out:
-                  <input name="bot-field" />
+                  Don&apos;t fill this out: <input name="bot-field" />
                 </label>
               </p>
 
-              <input
+              <Form.Control
+                className="mb-3"
                 type="text"
                 name="name"
                 placeholder="Full Name"
@@ -103,7 +108,8 @@ export default function Contact({ cvMessage, onRequestCv }) {
                 value={form.name}
                 onChange={handleChange}
               />
-              <input
+              <Form.Control
+                className="mb-3"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -111,23 +117,25 @@ export default function Contact({ cvMessage, onRequestCv }) {
                 value={form.email}
                 onChange={handleChange}
               />
-              <textarea
-                name="message"
+              <Form.Control
+                className="mb-3"
+                as="textarea"
                 rows={6}
+                name="message"
                 placeholder="Message"
                 required
                 value={form.message}
                 onChange={handleChange}
-              ></textarea>
+              />
 
-              <button type="submit" className="btn btn-primary" disabled={sending}>
+              <Button type="submit" variant="success" className="px-4" disabled={sending}>
                 {sending ? "Sending..." : "Send Email"}
-              </button>
+              </Button>
               <span className="txt">{sendStatus}</span>
-            </form>
-          </div>
-        </div>
-      </div>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 }

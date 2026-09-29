@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { Container, Navbar, Nav as BsNav, Offcanvas } from "react-bootstrap";
 import { nav } from "../data.js";
 
 export default function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [activeHref, setActiveHref] = useState("#header");
-  const menubarRef = useRef(null);
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll("section[id]"));
@@ -12,55 +12,52 @@ export default function Nav() {
     function setActiveLink() {
       let currentId = sections[0]?.id;
       const scrollPos = window.scrollY + window.innerHeight * 0.3;
-
       for (const section of sections) {
-        if (section.offsetTop <= scrollPos) {
-          currentId = section.id;
-        }
+        if (section.offsetTop <= scrollPos) currentId = section.id;
       }
-
       setActiveHref(`#${currentId}`);
     }
 
-    window.addEventListener("scroll", setActiveLink);
+    window.addEventListener("scroll", setActiveLink, { passive: true });
     setActiveLink();
     return () => window.removeEventListener("scroll", setActiveLink);
   }, []);
 
   return (
-    <nav aria-label="navigation menu">
-      <img className="logo" src="/images/portfolio.png" alt="logo image" />
+    <Navbar
+      expand="md"
+      fixed="top"
+      variant="dark"
+      className="site-nav"
+      expanded={expanded}
+      onToggle={setExpanded}
+    >
+      <Container fluid className="px-3 px-md-4">
+        <Navbar.Brand href="#header">
+          <img className="logo" src="/images/portfolio.png" alt="Portfolio logo" />
+        </Navbar.Brand>
 
-      <i className="fa fa-bars" onClick={() => setMenuOpen(true)}></i>
+        {/* Bootstrap swaps this for a close (X) button inside the drawer */}
+        <Navbar.Toggle aria-controls="menu-drawer" />
 
-      <ul
-        id="menubar"
-        role="menubar"
-        aria-label="navigation menu"
-        ref={menubarRef}
-        style={{ right: menuOpen ? "0" : undefined }}
-      >
-        {nav.map((item) => (
-          <li key={item.href}>
-            <a
-              href={item.href}
-              role="menuitem"
-              tabIndex={0}
-              className={activeHref === item.href ? "active" : undefined}
-              onClick={() => setMenuOpen(false)}
-            >
-              <i className={`fa ${item.icon}`}></i> {item.label}
-            </a>
-          </li>
-        ))}
-        <li>
-          <i
-            className="fa fa-times"
-            style={{ display: menuOpen ? "block" : "none" }}
-            onClick={() => setMenuOpen(false)}
-          ></i>
-        </li>
-      </ul>
-    </nav>
+        <Navbar.Offcanvas id="menu-drawer" placement="end" className="site-drawer">
+          <Offcanvas.Header closeButton closeVariant="white" />
+          <Offcanvas.Body>
+            <BsNav className="ms-auto">
+              {nav.map((item) => (
+                <BsNav.Link
+                  key={item.href}
+                  href={item.href}
+                  active={activeHref === item.href}
+                  onClick={() => setExpanded(false)}
+                >
+                  <i className={`fa ${item.icon}`}></i> {item.label}
+                </BsNav.Link>
+              ))}
+            </BsNav>
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
+      </Container>
+    </Navbar>
   );
 }

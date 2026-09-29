@@ -1,3 +1,4 @@
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { projects } from "../data.js";
 
 export default function Projects() {
@@ -10,44 +11,34 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects">
-      <div className="container mt-3">
+    <section id="projects" className="page-section">
+      <Container>
         <h2 className="sub-title">Projects</h2>
-        <div className="row">
+        <Row className="g-4">
           {projects.map((project) => (
-            <div className="col-lg-4 mt-4" key={project.id}>
-              <div className="card project-card">
-                <img
-                  className="card-img-top"
-                  src={project.image}
-                  alt="Card image"
-                />
-                <div className="card-body">
-                  <h4 className="card-title">{project.title}</h4>
-                  <p className="card-text">{project.text}</p>
-                  <div className="text-center">
+            <Col key={project.id} xs={12} md={6} lg={4}>
+              <Card className="project-card h-100">
+                <Card.Img variant="top" src={project.image} alt={project.title} />
+                <Card.Body className="d-flex flex-column">
+                  <Card.Title as="h4">{project.title}</Card.Title>
+                  <Card.Text>{project.text}</Card.Text>
+                  <div className="mt-auto">
                     {project.action.type === "anchor" ? (
-                      <a
-                        href={project.action.url}
-                        className="btn btn-success live-link-button"
-                      >
+                      <Button variant="success" size="sm" href={project.action.url}>
                         {project.action.label}
-                      </a>
+                      </Button>
                     ) : (
-                      <button
-                        className="btn btn-success live-link-button"
-                        onClick={() => handleAction(project)}
-                      >
+                      <Button variant="success" size="sm" onClick={() => handleAction(project)}>
                         {project.action.label}
-                      </button>
+                      </Button>
                     )}
                   </div>
-                </div>
-              </div>
-            </div>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
-        </div>
-      </div>
+        </Row>
+      </Container>
     </section>
   );
 }

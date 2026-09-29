@@ -1,9 +1,10 @@
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { publications, researchGateProfile } from "../data.js";
 
 export default function Publications() {
   return (
-    <section id="publications">
-      <div className="container mt-3">
+    <section id="publications" className="page-section">
+      <Container>
         <h2 className="sub-title">
           Publications Based on My Research and Development work
         </h2>
@@ -11,41 +12,43 @@ export default function Publications() {
           Selected research output from my AIoT and machine-vision work at the
           University of Turku. Full text linked where publicly available.
         </p>
-        <div className="row">
+
+        <Row className="g-4">
           {publications.map((pub) => (
-            <div className="col-lg-4 mt-4" key={pub.id}>
-              <div className="card publication-card">
-                <div className="card-body">
+            <Col key={pub.id} xs={12} md={6} lg={4}>
+              <Card className="publication-card h-100 text-start">
+                <Card.Body className="d-flex flex-column">
                   <span className="pub-type">{pub.type}</span>
-                  <h5 className="card-title">{pub.title}</h5>
-                  <p className="card-text">{pub.text}</p>
-                  <div className="text-center">
-                    <a
+                  <Card.Title as="h5">{pub.title}</Card.Title>
+                  <Card.Text>{pub.text}</Card.Text>
+                  <div className="mt-auto text-center">
+                    <Button
+                      variant="success"
+                      size="sm"
                       href={pub.url}
-                      className="btn btn-success live-link-button"
                       target="_blank"
                       rel="noreferrer"
                     >
                       View on ResearchGate
-                    </a>
+                    </Button>
                   </div>
-                </div>
-              </div>
-            </div>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
-        </div>
+        </Row>
 
-        <div className="text-center mt-4">
-          <a
+        <div className="mt-4">
+          <Button
+            variant="outline-light"
             href={researchGateProfile}
-            className="btn btn-outline-light live-link-button"
             target="_blank"
             rel="noreferrer"
           >
             View Full ResearchGate Profile
-          </a>
+          </Button>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

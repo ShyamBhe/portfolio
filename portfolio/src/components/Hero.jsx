@@ -1,39 +1,37 @@
+import { Button } from "react-bootstrap";
+
 export default function Hero({ onRequestCv }) {
   return (
-    <section id="header">
+    <section
+      id="header"
+      className="hero d-flex align-items-center justify-content-center text-center"
+    >
       <div className="header-text">
-        <p className="eyebrow">
-          Hi, I'm <span>Shyam</span>
-        </p>
+        <p class="hello-text">Hello World, I'm <span>Shyam (Matti)</span></p>
         <h1>AI &amp; Software Engineer</h1>
         <h2>
-          Building multimodal AI, full-stack software, and intelligent
-          systems for real-world applications.
+          Engineering multimodal AI, full-stack software, and intelligent systems for real-world applications.
         </h2>
 
         <p className="profile-text">
-          I research and build intelligent software systems that bring AI
+          "Rapid advancements in AI is changing how the world works.I research and build intelligent software systems that bring AI
           and machine learning models into real-world applications. My work
           combines software engineering, multimodal AI, MLLMs, training
           models, transfer learning, LLMs, computer vision, data, and
           sensor-driven systems to turn complex research ideas into
-          practical solutions.
+          practical solutions."
         </p>
 
-        <div className="cta-row">
-          <a href="#projects" className="btn btn-success live-link-button">
+        <div className="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 mt-3">
+          <Button href="#projects" variant="success">
             View Projects
-          </a>
-          <a
-            href="#contact"
-            className="btn btn-outline-light live-link-button"
-            onClick={onRequestCv}
-          >
+          </Button>
+          <Button href="#contact" variant="outline-light" onClick={onRequestCv}>
             Request CV
-          </a>
-          <a href="#contact" className="btn btn-outline-light live-link-button">
+          </Button>
+          <Button href="#contact" variant="outline-light">
             Contact Me
-          </a>
+          </Button>
         </div>
 
         <div className="proof-row">

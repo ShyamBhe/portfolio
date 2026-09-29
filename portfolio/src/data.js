@@ -91,19 +91,19 @@ export const projects = [
     id: "mental-health",
     title: "Applied AI integrated Mental Health Care System",
     image: "/images/AIMODELUIDemo.png",
-    text: "An ongoing, versatile AI/ML-assisted joint mental health care project — a platform for patients to discuss with trained AI models and human specialists based on symptoms and needs. A complete intelligent system with responsible AI. This is a patented product so not all information can be shared. Built with React, FastAPI, deep learning and NLP-based algorithms, with integrated sensors for voice, heart-rate and other data.",
+    text: "An ongoing, versatile AI/ML-assisted joint mental health care project, a platform for patients to discuss with trained AI models and human specialists (if needed at the end) based on symptoms and needs. A complete intelligent system with responsible AI. This is a patented product so not all information can be shared. Built with React, FastAPI, deep learning and NLP-based algorithms, with integrated sensors for voice, heart-rate and other data.",
     action: {
       label: "More Info",
       type: "alert",
       alertText:
-        "SORRY — this is our ongoing current research project. We can't reveal all the information. The system will not be available for public use as it is going to be one of the patented products. More research is going on with AI based versatile models, multimodal data integration and other approaches.",
+        "SORRY — this is our ongoing current research project. We can't reveal all the information. The system may not be available for public use as it is going to be one of the patented products. More research is going on with AI based versatile models, multimodal data integration and other approaches.",
     },
   },
   {
     id: "country-finder",
     title: "Country Finder AI assisted App",
     image: "/images/countryuiai.png",
-    text: "An AI-assisted application built with React, OpenAI, Gemini, React Hooks and CSS. Shows detailed country information, lets users chat with an AI-assisted bot for country info, and displays details on an interactive map.",
+    text: "An AI-assisted application, users can get info from chatbot Shows detailed country information, or specific answer for questions related to country.Users can get summary and detail info about country from app. Also lets users chat with an AI-assisted bot for country info, and displays details on an interactive map. built with React, OpenAI, Gemini, React Hooks and CSS. Country finder API has been used to fetch the information from Country. ",
     action: {
       label: "Live Link",
       type: "anchor",
@@ -114,7 +114,7 @@ export const projects = [
     id: "ecommerce",
     title: "Ecommerce Shop",
     image: "/images/OnlineShop.png",
-    text: "One of many freelance applications: a sample UI for a hybrid app. Admins can add and update products; clients can view, filter, order, and have products delivered. Part of a full-stack client project built with React, Redux, payment authentication, advanced user authentication, Node, MS Azure, AWS, C#, Docker and Jenkins.",
+    text: "One of many freelance client based applications: a sample UI for a hybrid app. Admins can add and update products, clients can view, filter, order, and have products delivered. Part of a full-stack client project built with React, Redux, payment authentication, advanced user authentication, Node, MS Azure, AWS, C#, Docker and Jenkins. Worked on live on production projects according to client's needs",
     action: {
       label: "Live Link",
       type: "anchor",
@@ -125,7 +125,7 @@ export const projects = [
     id: "digital-repo",
     title: "National Digital Repository",
     image: "/images/NationalDigitalRepo.png",
-    text: "UI developed for an educational project for searching and uploading thesis information from students. Part of a broader R&D project, built in React and Redux with a Python/FastAPI backend and authentication. Only a sample UI is included here.",
+    text: "Part of a broader R&D project, built in React and Redux with a Python/FastAPI backend and authentication. Was a real product developed for University's project.UI developed for an educational project for searching and uploading thesis information from students.  Only a sample UI is included here.",
     action: {
       label: "Live Link",
       type: "anchor",
@@ -136,7 +136,7 @@ export const projects = [
     id: "library-system",
     title: "Library Management System",
     image: "/images/Library.png",
-    text: "Desktop application built with MS Access DB, C#, and SQL. Lets librarians and users log in, search, add and update library operations, digitalizing the library's workflow. Later updated for a client in React and Python with Django, using MS Azure for the database.",
+    text: "Desktop application built with MS Access DB, C#, and SQL. Lets librarians and users log in, search, add and update library operations, digitalizing the library's workflow. Later updated for a client in React and ASP ,.NET web, using MS Azure for the database.",
     action: {
       label: "Live Link",
       type: "anchor",
