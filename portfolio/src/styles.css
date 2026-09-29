@@ -151,12 +151,12 @@ nav ul li a:hover i {
     background-size: 120% 120%;
     background-position: center;
     animation: backgroundMove 40s ease infinite;
-    height: 98vh;
+    min-height: calc(100vh - 90px); /* Fits comfortably in viewport without excessive gap */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
+    padding: 60px 20px; /* Provides consistent spacing above & below */
 }
 
 /* overlay */
@@ -1327,6 +1327,68 @@ nav .fas {
     cursor: pointer;
 }
 
+Yes! You only need to replace two specific parts:
+
+1. **Part 1 (The Header on Desktop):** Update the `#header`, `.header-text h1`, `.header-text h2`, and `.header-text .profile-text` rules near lines 150–220 so the hero size shrinks on Windows/desktop screens.
+2. **Part 2 (The Mobile Block):** Replace everything inside `@media only screen and (max-width: 800px)` at the bottom of your CSS file.
+
+---
+
+### What to Replace: Step-by-Step
+
+#### Step 1: Update `#header` (Lines ~145–215 in `styles.css`)
+
+Find your existing `#header` and `.header-text` styles and replace them with this:
+
+```css
+/* ---------------- HEADER ---------------- */
+#header {
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/images/ImageBackground.png');
+    background-color: black;
+    background-size: 120% 120%;
+    background-position: center;
+    animation: backgroundMove 40s ease infinite;
+    min-height: calc(100vh - 90px); /* Replaces 85vh to stop vertical stretching */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px; /* Gives top/bottom breathing room */
+}
+
+.header-text {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header-text h1 {
+    font-size: 48px; /* Reduced from 60px */
+    margin: 8px 0;
+    color: white;
+}
+
+.header-text h2 {
+    font-size: 26px; /* Reduced from 40px */
+    margin: 12px 0 20px;
+    color: white;
+    line-height: 1.3;
+}
+
+.header-text .profile-text {
+    color: #ddd;
+    font-size: 18px; /* Reduced from 25px */
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 20px auto 0 auto;
+    padding: 0 15px;
+    text-align: center;
+    font-weight: 400;
+}
+
 @media only screen and (max-width: 800px) {
     /* Navigation Styles */
     nav ul {
@@ -1337,120 +1399,124 @@ nav .fas {
 
     nav ul li {
         display: block;
-        margin: 20px 0;
-        text-align: center;
+        margin: 15px 0;
+        text-align: left;
     }
 
     nav ul li a {
         font-size: 18px;
     }
 
+    /* Hamburger Icon */
     nav .fa-bars {
         display: block;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        font-size: 28px;
+        font-size: 26px;
         color: white;
         cursor: pointer;
-        z-index: 1100;
+        z-index: 1001;
     }
 
-    nav .fa-times {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 28px;
-        color: white;
-        cursor: pointer;
-    }
-
-    .logo {
-        height: 4vh;
-        width: auto;
-        margin: 0;
-    }
-
+    /* Mobile Drawer */
     #menubar {
         flex-direction: column;
         position: fixed;
         top: 0;
-        right: -250px;
-        width: 250px;
+        right: -260px;
+        width: 260px;
         height: 100vh;
-        background-color: #333;
+        background-color: #17181b;
         transition: right 0.3s ease-in-out;
-        padding: 60px 20px;
-        z-index: 1000;
+        padding: 80px 25px 30px;
+        z-index: 1050;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Close (X) Icon inside side drawer */
+    nav #menubar .fa-times {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 26px;
+        color: white;
+        cursor: pointer;
+        z-index: 1100;
+        padding: 5px;
+    }
+
+    .logo {
+        height: 35px;
+        width: auto;
+        margin: 0;
     }
 
     #menubar li {
-        margin: 20px 0;
+        margin: 15px 0;
     }
 
     #menubar li a {
-        font-size: 20px;
+        font-size: 18px;
         color: white;
         text-decoration: none;
     }
 
-    /* Header & Hero Fixes */
+    /* Header & Hero Mobile Reset */
     #header {
-        padding: 20px 15px;
+        height: auto; /* Natural height stops clipping content on iPhone */
+        min-height: auto;
+        padding: 100px 16px 40px;
     }
 
     .header-text h1 {
-        font-size: 24px;
+        font-size: 28px;
         margin-bottom: 8px;
     }
 
     .header-text h2 {
-        font-size: 16px;
-        line-height: 1.3;
+        font-size: 17px;
+        line-height: 1.35;
         margin-bottom: 12px;
     }
 
-    .header-text p {
-        font-size: 13px;
-        line-height: 1.4;
+    .header-text .profile-text {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-top: 15px;
     }
 
     .header-text .eyebrow {
         font-size: 15px;
     }
 
-    .header-text .tag-row {
-        font-size: 12px;
-    }
-
     .header-text .location-line {
-        font-size: 12px;
-        margin-top: 10px;
+        font-size: 13px;
+        margin-top: 15px;
     }
 
     .proof-row {
         font-size: 12px;
-        gap: 6px 10px;
-        margin-top: 15px;
+        gap: 8px 12px;
+        margin-top: 18px;
     }
 
     .proof-row span:not(:last-child)::after {
-        margin-left: 10px;
+        content: '';
+        margin-left: 0;
     }
 
     /* Stack buttons vertically on mobile */
     .cta-row {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-top: 15px;
+        gap: 12px;
+        margin-top: 20px;
         width: 100%;
     }
 
     .cta-row .btn {
         width: 100%;
         text-align: center;
+        padding: 12px 20px;
     }
 
     /* About Section */
