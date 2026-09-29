@@ -445,45 +445,6 @@ body::before {
   font-size: clamp(12px, 1.4vw, 15px);
 }
 
-/* ---------------- CHATBOT ---------------- */
-
-.chatbot-root {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 1500;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
-
-.chatbot-toggle {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: none;
-  background: var(--green);
-  color: #06210f;
-  font-size: 20px;
-  box-shadow: 0 6px 18px rgba(46, 204, 113, 0.4);
-  cursor: pointer;
-}
-
-.chatbot-panel {
-  width: 320px;
-  max-width: calc(100vw - 32px);
-  max-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background: var(--nav-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-  color: #fff;
-}
-
 /* ---------------- RESPONSIVE MEDIA QUERIES ---------------- */
 
 @media (max-width: 767.98px) {
