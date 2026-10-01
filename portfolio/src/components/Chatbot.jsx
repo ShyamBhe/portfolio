@@ -12,36 +12,26 @@ import {
 const GREETING =
   "Hi! 👋 I'm Shyam's portfolio assistant. I can tell you about his skills, experience, education, projects, research, publications, and contact information. What would you like to know?";
 
-const RESEARCHGATE =
-  "https://www.researchgate.net/profile/Shyam-Bhetuwal";
+const RESEARCHGATE = "https://www.researchgate.net/profile/Shyam-Bhetuwal";
 
 // ------------------------------------------------------------
-// Robot avatar
+// Robot avatar (used in header, bot messages and launcher).
+// To use your own image instead, put it in /public/robot.svg
+// and set: const ROBOT = "/robot.svg";
 // ------------------------------------------------------------
 const ROBOT =
   "data:image/svg+xml;utf8," +
-  encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-      <circle cx="32" cy="32" r="32" fill="#0b1f14"/>
-      <rect x="16" y="22" width="32" height="26" rx="8" fill="#2ecc71"/>
-      <circle cx="25" cy="34" r="4" fill="#06210f"/>
-      <circle cx="39" cy="34" r="4" fill="#06210f"/>
-      <rect x="26" y="42" width="12" height="3" rx="1.5" fill="#06210f"/>
-      <line
-        x1="32"
-        y1="22"
-        x2="32"
-        y2="14"
-        stroke="#2ecc71"
-        stroke-width="3"
-      />
-      <circle cx="32" cy="12" r="3" fill="#2ecc71"/>
-    </svg>
-  `);
+  encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="32" fill="#0b1f14"/>
+    <rect x="16" y="22" width="32" height="26" rx="8" fill="#2ecc71"/>
+    <circle cx="25" cy="34" r="4" fill="#06210f"/>
+    <circle cx="39" cy="34" r="4" fill="#06210f"/>
+    <rect x="26" y="42" width="12" height="3" rx="1.5" fill="#06210f"/>
+    <line x1="32" y1="22" x2="32" y2="14" stroke="#2ecc71" stroke-width="3"/>
+    <circle cx="32" cy="12" r="3" fill="#2ecc71"/>
+  </svg>`);
 
-// ------------------------------------------------------------
-// Menu shown only at the beginning
-// ------------------------------------------------------------
+// One menu, shown at the start AND after every answer.
 const MENU = [
   "Skills",
   "Experience",
@@ -52,7 +42,8 @@ const MENU = [
 ];
 
 // ------------------------------------------------------------
-// Whole-word / whole-phrase matching
+// Whole-word / whole-phrase matching (so "hi" no longer matches
+// "which" or "shipping").
 // ------------------------------------------------------------
 function escapeRegex(text) {
   return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -73,35 +64,15 @@ function projectById(id) {
 
 function projectAnswer(id, extra) {
   const project = projectById(id);
-
-  if (!project) {
-    return "I couldn't find that project in the portfolio data.";
-  }
-
-  return (
-    `${project.title}\n\n${project.text}` +
-    (extra ? `\n\n${extra}` : "")
-  );
+  return `${project.title}\n\n${project.text}` + (extra ? `\n\n${extra}` : "");
 }
-
-// ============================================================
-// LOCAL FALLBACK ANSWERS
-// ============================================================
 
 function getAnswer(question) {
   const input = question.toLowerCase().trim();
 
-  // ---------------- HIRING INTENT ----------------
+  // ---------------- HIRING INTENT (checked first) ----------------
   if (
-    contains(input, [
-      "hire",
-      "hiring",
-      "recruit",
-      "recruiting",
-      "recruiter",
-      "vacancy",
-      "job offer",
-    ])
+    contains(input, ["hire", "hiring", "recruit", "recruiting", "recruiter", "vacancy", "job offer"])
   ) {
     return (
       "Shyam is a strong fit for AI and software engineering roles:\n\n" +
@@ -157,7 +128,7 @@ function getAnswer(question) {
     );
   }
 
-  // ---------------- MASTER'S THESIS ----------------
+  // ---------------- MASTER'S THESIS (before education) ----------------
   if (
     contains(input, [
       "master thesis",
@@ -299,7 +270,7 @@ function getAnswer(question) {
     return projectAnswer("library-system");
   }
 
-  // ---------------- PROJECTS ----------------
+  // ---------------- PROJECTS (general) ----------------
   if (
     contains(input, [
       "project",
@@ -394,15 +365,9 @@ function getAnswer(question) {
     );
   }
 
-  // ---------------- GREETING ----------------
+  // ---------------- GREETING (checked late so it never hides real questions) ----------------
   if (
-    contains(input, [
-      "hello",
-      "hi",
-      "hey",
-      "good morning",
-      "good evening",
-    ])
+    contains(input, ["hello", "hi", "hey", "good morning", "good evening"])
   ) {
     return GREETING;
   }
@@ -422,47 +387,33 @@ function getAnswer(question) {
 }
 
 // ============================================================
-// GEMINI VIA NETLIFY FUNCTION + LOCAL FALLBACK
+// GEMINI (via Netlify function) WITH LOCAL FALLBACK
 // ============================================================
 
 async function getReply(input) {
   const question = input.trim();
 
-  // Menu buttons use instant local answers.
-  if (
-    MENU.some(
-      (item) => item.toLowerCase() === question.toLowerCase()
-    )
-  ) {
+  // Menu buttons: instant local answers, no API call.
+  if (MENU.some((item) => item.toLowerCase() === question.toLowerCase())) {
     return getAnswer(question);
   }
 
-  // Free-typed questions go to Gemini.
-  // If Gemini fails for any reason, use the local fallback.
+  // Free-typed questions: ask Gemini, fall back to local answers on any failure.
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 15000);
 
   try {
     const response = await fetch("/api/chat", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: question,
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: question }),
       signal: controller.signal,
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const data = await response.json();
-
-    if (!data.reply) {
-      throw new Error("Empty reply");
-    }
+    if (!data.reply) throw new Error("Empty reply");
 
     return data.reply;
   } catch {
@@ -477,26 +428,25 @@ async function getReply(input) {
 // ============================================================
 
 const flow = {
-  // First message + menu
   start: {
     message: GREETING,
     options: MENU,
     path: "answer",
   },
 
-  // Handles both menu selections and typed questions
   answer: {
     message: async (params) => getReply(params.userInput),
-    transition: {
-      duration: 0,
-    },
+    // Without this, the bot waits for another user message before moving
+    // on, so the buttons never appear and your next message gets swallowed.
+    transition: { duration: 0 },
     path: "continue",
   },
 
-  // No repeated menu here.
-  // User can simply type another question in the input box.
+  // Short follow-up + same buttons after every answer (no repeated greeting).
   continue: {
-    message: "You can ask me another question about Shyam.",
+    message: "What else would you like to know?",
+    options: MENU,
+    path: "answer",
   },
 };
 
@@ -526,17 +476,26 @@ const settings = {
     avatar: ROBOT,
   },
 
+  // Robot next to every bot message
   botBubble: {
     showAvatar: true,
     avatar: ROBOT,
   },
 
+  // Robot on the floating launcher button (optional)
   chatButton: {
     icon: ROBOT,
   },
 
+  // Bell button, notification sound and unread badge use the library defaults.
+
   chatInput: {
     enabledPlaceholderText: "Ask about Shyam...",
+  },
+
+  // Keep the conversation when the page refreshes
+  chatHistory: {
+    storageType: "SESSION_STORAGE",
   },
 };
 
@@ -624,48 +583,42 @@ export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [ready, setReady] = useState(false);
 
-  // Prevent React StrictMode from rendering the chatbot twice
-  // during development.
+  // React StrictMode (dev only) mounts components twice, which starts the
+  // chat flow twice and doubles the buttons. Mounting the chat one tick
+  // later means only the second, real mount ever renders it.
   useEffect(() => {
     const timer = setTimeout(() => setReady(true), 0);
-
     return () => clearTimeout(timer);
   }, []);
 
-  // Track whether the chatbot window is open.
+  // Track whether the chat window is open, so the ↻ button
+  // disappears together with the window.
   useEffect(() => {
     const onToggle = (event) => {
       const data = event?.data ?? event?.detail ?? {};
-
       if (typeof data.newState === "boolean") {
         setIsOpen(data.newState);
       } else if (typeof data.currentState === "boolean") {
         setIsOpen(!data.currentState);
       } else {
+        // Unknown payload shape: fall back to toggling
         setIsOpen((prev) => !prev);
       }
     };
 
-    window.addEventListener(
-      "rcb-toggle-chat-window",
-      onToggle
-    );
-
+    window.addEventListener("rcb-toggle-chat-window", onToggle);
     return () =>
-      window.removeEventListener(
-        "rcb-toggle-chat-window",
-        onToggle
-      );
+      window.removeEventListener("rcb-toggle-chat-window", onToggle);
   }, []);
 
-  // Start a completely fresh chat.
   function startNewChat() {
+    // Clear only the library's stored history, then remount the chat
     Object.keys(sessionStorage)
       .filter((key) => key.startsWith("rcb"))
       .forEach((key) => sessionStorage.removeItem(key));
 
     setChatKey((previous) => previous + 1);
-    setIsOpen(false);
+    setIsOpen(false); // remounted chat starts closed; reopen via launcher
   }
 
   return (
