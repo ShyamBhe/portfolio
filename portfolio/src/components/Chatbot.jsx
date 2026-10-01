@@ -20,18 +20,27 @@ const RESEARCHGATE =
 // ------------------------------------------------------------
 const ROBOT =
   "data:image/svg+xml;utf8," +
-  encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-    <circle cx="32" cy="32" r="32" fill="#0b1f14"/>
-    <rect x="16" y="22" width="32" height="26" rx="8" fill="#2ecc71"/>
-    <circle cx="25" cy="34" r="4" fill="#06210f"/>
-    <circle cx="39" cy="34" r="4" fill="#06210f"/>
-    <rect x="26" y="42" width="12" height="3" rx="1.5" fill="#06210f"/>
-    <line x1="32" y1="22" x2="32" y2="14" stroke="#2ecc71" stroke-width="3"/>
-    <circle cx="32" cy="12" r="3" fill="#2ecc71"/>
-  </svg>`);
+  encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="32" fill="#0b1f14"/>
+      <rect x="16" y="22" width="32" height="26" rx="8" fill="#2ecc71"/>
+      <circle cx="25" cy="34" r="4" fill="#06210f"/>
+      <circle cx="39" cy="34" r="4" fill="#06210f"/>
+      <rect x="26" y="42" width="12" height="3" rx="1.5" fill="#06210f"/>
+      <line
+        x1="32"
+        y1="22"
+        x2="32"
+        y2="14"
+        stroke="#2ecc71"
+        stroke-width="3"
+      />
+      <circle cx="32" cy="12" r="3" fill="#2ecc71"/>
+    </svg>
+  `);
 
 // ------------------------------------------------------------
-// Menu
+// Menu shown only at the beginning
 // ------------------------------------------------------------
 const MENU = [
   "Skills",
@@ -76,10 +85,34 @@ function projectAnswer(id, extra) {
 }
 
 // ============================================================
-// ANSWER ENGINE
+// LOCAL FALLBACK ANSWERS
 // ============================================================
+
 function getAnswer(question) {
   const input = question.toLowerCase().trim();
+
+  // ---------------- HIRING INTENT ----------------
+  if (
+    contains(input, [
+      "hire",
+      "hiring",
+      "recruit",
+      "recruiting",
+      "recruiter",
+      "vacancy",
+      "job offer",
+    ])
+  ) {
+    return (
+      "Shyam is a strong fit for AI and software engineering roles:\n\n" +
+      "• AI and machine learning, computer vision and multimodal systems\n" +
+      "• Full-stack software development\n" +
+      `• ${publications.length} publications and hands-on R&D experience\n\n` +
+      "To discuss a role, contact him:\n" +
+      `• Email: ${contact.email}\n` +
+      `• LinkedIn: ${contact.linkedin}`
+    );
+  }
 
   // ---------------- SKILLS ----------------
   if (
@@ -389,30 +422,81 @@ function getAnswer(question) {
 }
 
 // ============================================================
+// GEMINI VIA NETLIFY FUNCTION + LOCAL FALLBACK
+// ============================================================
+
+async function getReply(input) {
+  const question = input.trim();
+
+  // Menu buttons use instant local answers.
+  if (
+    MENU.some(
+      (item) => item.toLowerCase() === question.toLowerCase()
+    )
+  ) {
+    return getAnswer(question);
+  }
+
+  // Free-typed questions go to Gemini.
+  // If Gemini fails for any reason, use the local fallback.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15000);
+
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: question,
+      }),
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.reply) {
+      throw new Error("Empty reply");
+    }
+
+    return data.reply;
+  } catch {
+    return getAnswer(question);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// ============================================================
 // CHATBOT FLOW
 // ============================================================
 
 const flow = {
+  // First message + menu
   start: {
     message: GREETING,
     options: MENU,
     path: "answer",
   },
 
+  // Handles both menu selections and typed questions
   answer: {
-    message: (params) => getAnswer(params.userInput),
-
+    message: async (params) => getReply(params.userInput),
     transition: {
       duration: 0,
     },
-
     path: "continue",
   },
 
+  // No repeated menu here.
+  // User can simply type another question in the input box.
   continue: {
-    message: "What else would you like to know?",
-    options: MENU,
-    path: "answer",
+    message: "You can ask me another question about Shyam.",
   },
 };
 
@@ -449,11 +533,6 @@ const settings = {
 
   chatButton: {
     icon: ROBOT,
-  },
-
-  // Disable notification/unread badge
-  notification: {
-    disabled: true,
   },
 
   chatInput: {
@@ -543,16 +622,17 @@ const styles = {
 export default function Chatbot() {
   const [chatKey, setChatKey] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [ready, setReady] = useState(false);
 
-  // Clear any old react-chatbotify session data.
-  // This removes the old unread "4" state.
+  // Prevent React StrictMode from rendering the chatbot twice
+  // during development.
   useEffect(() => {
-    Object.keys(sessionStorage)
-      .filter((key) => key.startsWith("rcb"))
-      .forEach((key) => sessionStorage.removeItem(key));
+    const timer = setTimeout(() => setReady(true), 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
-  // Track chatbot open/closed state
+  // Track whether the chatbot window is open.
   useEffect(() => {
     const onToggle = (event) => {
       const data = event?.data ?? event?.detail ?? {};
@@ -566,17 +646,19 @@ export default function Chatbot() {
       }
     };
 
-    window.addEventListener("rcb-toggle-chat-window", onToggle);
+    window.addEventListener(
+      "rcb-toggle-chat-window",
+      onToggle
+    );
 
-    return () => {
+    return () =>
       window.removeEventListener(
         "rcb-toggle-chat-window",
         onToggle
       );
-    };
   }, []);
 
-  // Start a completely new chat
+  // Start a completely fresh chat.
   function startNewChat() {
     Object.keys(sessionStorage)
       .filter((key) => key.startsWith("rcb"))
@@ -588,15 +670,16 @@ export default function Chatbot() {
 
   return (
     <div style={{ position: "relative" }}>
-      <ChatBot
-        key={chatKey}
-        id="shyam-portfolio-assistant"
-        flow={flow}
-        settings={settings}
-        styles={styles}
-      />
+      {ready && (
+        <ChatBot
+          key={chatKey}
+          id="shyam-portfolio-assistant"
+          flow={flow}
+          settings={settings}
+          styles={styles}
+        />
+      )}
 
-      {/* New chat button */}
       {isOpen && (
         <button
           type="button"
