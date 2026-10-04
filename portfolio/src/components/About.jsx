@@ -17,8 +17,8 @@ export default function About() {
       <Container>
         <h2 className="sub-title">About Myself</h2>
         <p className="about-text">
-          I am working as Lead AI AND Software Engineer and graduated with a Master&rsquo;s
-          Degree in Software and AI Engineering from the University of Turku.
+          I am working as Lead AI and Software Engineer and graduated with a Master&rsquo;s
+          Degree in Software and AI Data Engineering from the University of Turku.
         </p>
 
         <div className="tab-titles" role="tablist">

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shyam Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Shyam (Matti) Bhetuwal — AI & Software Engineer based in Helsinki, Finland."
+    />
+    <meta name="theme-color" content="#17181b" />
+
+    <!-- Apply saved language/theme before first paint (no flash). Keep in sync with SettingsContext.jsx -->
+    <script>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var theme = localStorage.getItem("portfolio-theme");
+          root.dataset.theme = theme === "light" ? "light" : "dark";
+          var lang = localStorage.getItem("portfolio-lang");
+          if (lang !== "en" && lang !== "fi") {
+            lang = (navigator.language || "en").toLowerCase().indexOf("fi") === 0 ? "fi" : "en";
+          }
+          root.lang = lang;
+        } catch (e) {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
