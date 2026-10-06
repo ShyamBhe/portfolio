@@ -8,11 +8,6 @@ import {
   menuLabels,
 } from "../i18n/chat.js";
 
-// ------------------------------------------------------------
-// Robot avatar (used in header, bot messages and launcher).
-// To use your own image instead, put it in /public/robot.svg
-// and set: const ROBOT = "/robot.svg";
-// ------------------------------------------------------------
 const ROBOT =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">

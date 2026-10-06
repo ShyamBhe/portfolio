@@ -1,10 +1,3 @@
-// Localised portfolio content. Pure JS (no JSX) so the Netlify chat function
-// can import it too.
-//
-// English is the single source of truth in ../data.js. Finnish only stores
-// what differs (text), matched by id / index, so images, links, ids and
-// contact details are never duplicated.
-
 import * as data from "../data.js";
 
 const fi = {

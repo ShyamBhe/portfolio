@@ -9,7 +9,7 @@ export default function Hero({ onRequestCv }) {
 
   const photo =
     theme === "dark"
-      ? "/images/photo_dark.png"
+      ? "/images/photo_light.png"
       : "/images/photo_light.png";
 
   return (

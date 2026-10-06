@@ -46,7 +46,7 @@ export const ui = {
       tabs: { skills: "Skills", experiences: "Experiences", education: "Education" },
     },
 
-    projects: { title: "Projects" },
+    projects: { title: "Works & Projects" },
 
     publications: {
       title: "Publications Based on My Research and Development work",
@@ -79,8 +79,8 @@ export const ui = {
       no: "No problem! You can request if you need anytime later also.",
     },
 
-    footer:
-      "Personal data presented in this profile and shared with this profile is protected and believed to be handled in accordance with the European data protection law (GDPR).",
+footer:
+  "© 2026 Shyam Bhetuwal. All rights reserved. | Personal data presented in this profile and shared through this profile is protected and intended to be handled in accordance with applicable European data protection law (GDPR).",
   },
 
   fi: {
@@ -128,7 +128,7 @@ export const ui = {
       tabs: { skills: "Taidot", experiences: "Työkokemus", education: "Koulutus" },
     },
 
-    projects: { title: "Projektit" },
+    projects: { title: "Työt & Projektit" },
 
     publications: {
       title: "Julkaisut tutkimus- ja kehitystyöstäni",
@@ -162,6 +162,6 @@ export const ui = {
     },
 
     footer:
-      "Tässä profiilissa esitettyjä ja profiilin kautta jaettuja henkilötietoja suojataan, ja niitä käsitellään Euroopan unionin tietosuoja-asetuksen (GDPR) mukaisesti.",
+   "© 2026 Shyam Bhetuwal. Kaikki oikeudet pidätetään. | Tässä profiilissa esitettyjä ja profiilin kautta jaettuja henkilötietoja suojataan ja niitä käsitellään sovellettavan Euroopan tietosuojalainsäädännön (GDPR) mukaisesti.",
   },
 };

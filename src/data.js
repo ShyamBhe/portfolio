@@ -89,21 +89,20 @@ export const projects = [
   },
   {
     id: "mental-health",
-    title: "Applied AI integrated Mental Health Care System",
-    image: "/images/AIMODELUIDemo.png",
-    text: "An ongoing, versatile AI/ML-assisted joint mental health care project, a platform for patients to discuss with trained AI models and human specialists (if needed at the end) based on symptoms and needs. A complete intelligent system with responsible AI. This is a patented product so not all information can be shared. Built with React, FastAPI, deep learning and NLP-based algorithms, with integrated sensors for voice, heart-rate and other data.",
+    title: "Agentic AI integrated Mental Health Care System",
+    image: "/images/mentalUI.png",
+    text: "An ongoing, versatile AI/ML-assisted joint mental health care advanced work, a platform for all concerned parties (clinicians, hospitals and patients). Possible to discuss with trained AI models and human specialists (if needed at the end) based on needs. Sensors, NlP,LLMs, integrated responsible AI system. This is going to bea patented product. Building withdeep learning and NLP-based algorithms, with integrated sensors for voice, heart-rate and other data.",
     action: {
-      label: "More Info",
-      type: "alert",
-      alertText:
-        "SORRY — this is our ongoing current research project. We can't reveal all the information. The system may not be available for public use as it is going to be one of the patented products. More research is going on with AI based versatile models, multimodal data integration and other approaches.",
-    },
+      label: "Live Link",
+      type: "anchor",
+      url: "https://mindsightaitool.onrender.com/",
+  },
   },
   {
     id: "country-finder",
     title: "Country Finder AI assisted App",
     image: "/images/countryuiai.png",
-    text: "An AI-assisted application, users can get info from chatbot Shows detailed country information, or specific answer for questions related to country.Users can get summary and detail info about country from app. Also lets users chat with an AI-assisted bot for country info, and displays details on an interactive map. built with React, OpenAI, Gemini, React Hooks and CSS. Country finder API has been used to fetch the information from Country. ",
+    text: "An AI poweredchatbot assisted countryfinder, users can get info from chatbot Shows detailed country information, or specific answer for questions related to country.Users can get summary and detail info about country from app. Also lets users chat with an AI-assisted bot for country info, and displays details on an interactive map. built with React, OpenAI, Gemini, React Hooks and CSS. Country finder API has been used to fetch the information from Country. ",
     action: {
       label: "Live Link",
       type: "anchor",
