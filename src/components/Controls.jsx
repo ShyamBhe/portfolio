@@ -1,9 +1,7 @@
 import { useSettings } from "../i18n/SettingsContext.jsx";
 
 export default function Controls() {
-  const { lang, theme, toggleLang, toggleTheme, t } = useSettings();
-
-  const isDark = theme === "dark";
+  const { lang, toggleLang } = useSettings();
 
   // Select a specific language.
   // toggleLang() is only called when the requested language
@@ -45,21 +43,6 @@ export default function Controls() {
           EN
         </button>
       </div>
-
-      {/* Theme */}
-      <button
-        type="button"
-        className="ctrl-btn ctrl-theme"
-        onClick={toggleTheme}
-        aria-label={isDark ? t.controls.toLight : t.controls.toDark}
-        aria-pressed={isDark}
-        title={isDark ? t.controls.toLight : t.controls.toDark}
-      >
-        <i
-          className={`fa-solid ${isDark ? "fa-sun" : "fa-moon"}`}
-          aria-hidden="true"
-        ></i>
-      </button>
     </div>
   );
 }

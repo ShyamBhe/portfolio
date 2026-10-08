@@ -4,7 +4,7 @@ import { useSettings } from "../i18n/SettingsContext.jsx";
 import Controls from "./Controls.jsx";
 
 export default function Nav() {
-  const { t, theme, content } = useSettings();
+  const { t, content } = useSettings();
   const [expanded, setExpanded] = useState(false);
   const [activeHref, setActiveHref] = useState("#header");
 
@@ -30,13 +30,11 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", setActiveLink);
   }, []);
 
-  const isDark = theme === "dark";
-
   return (
     <Navbar
       expand="md"
       fixed="top"
-      variant={isDark ? "dark" : "light"}
+      variant="dark"
       className="site-nav"
       expanded={expanded}
       onToggle={setExpanded}
@@ -46,7 +44,7 @@ export default function Nav() {
           <img className="logo" src="/images/portfolio.png" alt={t.siteTitle} />
         </Navbar.Brand>
 
-        {/* Language + theme: always visible, also on mobile (before the burger). */}
+        {/* Controls: always visible, also on mobile (before the burger). */}
         <Controls />
 
         {/* Bootstrap swaps this for a close (X) button inside the drawer */}
@@ -63,7 +61,7 @@ export default function Nav() {
           <Offcanvas.Header
             closeButton
             closeLabel={t.controls.closeMenu}
-            closeVariant={isDark ? "white" : undefined}
+            closeVariant="white"
           />
 
           <Offcanvas.Body>
