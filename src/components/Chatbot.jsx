@@ -189,8 +189,7 @@ export default function Chatbot() {
     };
 
     window.addEventListener("rcb-toggle-chat-window", onToggle);
-    return () =>
-      window.removeEventListener("rcb-toggle-chat-window", onToggle);
+    return () => window.removeEventListener("rcb-toggle-chat-window", onToggle);
   }, []);
 
   function clearHistory() {
@@ -266,7 +265,7 @@ export default function Chatbot() {
       // Keep the conversation when the page refreshes
       chatHistory: { storageType: "SESSION_STORAGE" },
     }),
-    [T, reopen]
+    [T, reopen],
   );
 
   const styles = useMemo(() => buildStyles(theme), [theme]);

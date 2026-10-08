@@ -65,7 +65,9 @@ export default function Contact({ cvMessage, onRequestCv }) {
                 title="Primary GitHub — ShyamBhe"
               >
                 <i className="fa-brands fa-github"></i>
-                <span className="icon-label">{contact.githubPrimary.label}</span>
+                <span className="icon-label">
+                  {contact.githubPrimary.label}
+                </span>
               </a>
               <a
                 href={contact.githubSecondary.url}
@@ -74,7 +76,9 @@ export default function Contact({ cvMessage, onRequestCv }) {
                 title="Secondary GitHub — ShyaBhe"
               >
                 <i className="fa-brands fa-github"></i>
-                <span className="icon-label">{contact.githubSecondary.label}</span>
+                <span className="icon-label">
+                  {contact.githubSecondary.label}
+                </span>
               </a>
               <a href={contact.linkedin} target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-linkedin"></i>
@@ -82,7 +86,12 @@ export default function Contact({ cvMessage, onRequestCv }) {
               </a>
             </div>
 
-            <Button href="#" variant="success" className="mt-4 px-4" onClick={onRequestCv}>
+            <Button
+              href="#"
+              variant="success"
+              className="mt-4 px-4"
+              onClick={onRequestCv}
+            >
               {c.requestCv}
             </Button>
             <p className="text-success mt-2">{cvMessage}</p>
@@ -131,7 +140,12 @@ export default function Contact({ cvMessage, onRequestCv }) {
                 onChange={handleChange}
               />
 
-              <Button type="submit" variant="success" className="px-4" disabled={sending}>
+              <Button
+                type="submit"
+                variant="success"
+                className="px-4"
+                disabled={sending}
+              >
                 {sending ? c.sending : c.send}
               </Button>
               <span className="txt">{sendStatus}</span>

@@ -156,6 +156,7 @@ export function getContent(lang) {
     skills: data.skills,
     experience: data.experience,
     education: data.education,
+    recommendations: data.recommendations,
     projects: data.projects,
     publications: data.publications,
     researchGateProfile: data.researchGateProfile,

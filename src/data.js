@@ -96,7 +96,7 @@ export const projects = [
       label: "Live Link",
       type: "anchor",
       url: "https://mindsightaitool.onrender.com/",
-  },
+    },
   },
   {
     id: "country-finder",
@@ -144,6 +144,39 @@ export const projects = [
   },
 ];
 
+export const recommendations = [
+  {
+    author: "Tuomas Mäkilä",
+    title: "Associate Professor of Software Engineering",
+    organization: "University of Turku",
+    email: "tuomas.makila@utu.fi",
+    text: `I supervised Shyam Bhetuwal's Master's thesis and his research and development work in the Business Finland-funded Flavoria Flex project at the University of Turku. Throughout this work, Shyam has demonstrated a strong ability to bridge applied AI research with practical software engineering, contributing across the R&D lifecycle, including research, AI model evaluation, full-stack development, data pipelines, system integration, and real-world testing.
+        A particularly noteworthy aspect of his work was his contribution to developing approaches for validating and correcting AI-generated food predictions using contextual, standardized, and ground-truth data. This work demonstrated his ability to combine research-oriented thinking with practical technical implementation. His contributions have also resulted in three scientific publications, two of which he led as first author.
+       Shyam is highly self-motivated, research-oriented, technically capable, and effective in interdisciplinary collaboration. He combines strong software engineering skills with a solid understanding of AI and machine learning, as well as the ability to approach complex problems systematically and develop practical solutions.
+       I strongly recommend Shyam for positions as a Project Researcher, Full-Stack Developer, Software Engineer, or AI/ML Engineer, particularly in areas combining applied AI, intelligent systems, software engineering, and research and development. I am confident that his technical skills, research capabilities, and ability to work effectively across disciplines will enable him to make valuable contributions in both academic research and practical development work.`,
+  },
+
+  {
+    author: "Kirsi Laitinen",
+    title:
+      "Professor, Institute of Biomedicine and Director, Nutrition and Food Research Center",
+    organization: "Faculty of Medicine, University of Turku",
+    email: "kirsi.laitinen@utu.fi",
+    text: `I had the opportunity to work with Mr. Bhetuwal in the Flavoria Flex project at the University of Turku. He contributed to the development of AI-driven solutions integrating machine learning, data analytics, and sensing technologies. He demonstrated strong technical skills, a research-oriented approach, and the ability to work effectively in multidisciplinary teams. His work also contributed to scientific publications. I recommend him for positions in AI, software engineering, and research and development.`,
+  },
+
+  {
+    author: "Paavo Nevalainen",
+    title:
+      "Senior Researcher, Data Analytics — Algorithmics and Computational Intelligence",
+    organization: "University of Turku",
+    email: "paavo.nevalainen@utu.fi",
+    text: `I am pleased to recommend Mr. Shyam Bhetuwal in support of his application. I have observed his work in the Flavoria Flex project, where he applied pattern recognition and machine learning to the challenging problem of estimating the calorie content of food dishes from images in a real-world laboratory environment. He demonstrated the ability to plan, implement, evaluate, and integrate complex AI-based solutions into real-time processes. His work combined hardware, software, AI and machine learning models, multimodal approaches, and transfer learning for data collection and analysis.
+        He also developed automated processes for food-name mapping across multiple languages into Finnish terminology and for nutritional-information re-correction, while contributing to the automation of data collection and independently analyzing the resulting data. His work resulted in a first-author paper accepted at the IEEE Global Conference on Artificial Intelligence & Internet of Things (IEEE GCAIoT) 2025.
+        I taught Mr. Bhetuwal Machine Learning and Pattern Recognition, in which he received the highest grade (5/5). He has strong technical skills in advanced software engineering, data analytics, machine learning, and AI algorithms, together with concrete research experience. He is highly motivated, positive, honest, and research-oriented, and I have no doubt that he can thrive in a demanding research environment. I highly recommend Mr. Bhetuwal for researcher and PhD positions. Please feel free to contact me if you require any further information.`,
+  },
+];
+
 export const publications = [
   {
     id: "energy-composition",
@@ -171,12 +204,13 @@ export const publications = [
   },
 ];
 
-export const researchGateProfile = "https://www.researchgate.net/profile/Shyam-Bhetuwal";
+export const researchGateProfile =
+  "https://www.researchgate.net/profile/Shyam-Bhetuwal";
 
 export const contact = {
   email: "shyambhetuwal254@gmail.com",
   phone: "0453519888",
-  githubPrimary: { url: "https://github.com/ShyamBhe", label: "Shyamraja" },
-  githubSecondary: { url: "https://github.com/Shyamraja", label: "ShyamBhe" },
+  githubPrimary: { url: "https://github.com/ShyamBhe", label: "ShyamBhe" },
+  githubSecondary: { url: "https://github.com/Shyamraja", label: "Shyamraja" },
   linkedin: "https://www.linkedin.com/in/rshyamvetwal/",
 };

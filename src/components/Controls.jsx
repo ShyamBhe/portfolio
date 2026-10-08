@@ -1,4 +1,3 @@
-
 import { useSettings } from "../i18n/SettingsContext.jsx";
 
 export default function Controls() {
@@ -17,19 +16,10 @@ export default function Controls() {
 
   return (
     <div className="site-controls">
-
       {/* Language switcher */}
-      <div
-        className="lang-switch"
-        role="group"
-        aria-label="Kieli / Language"
-      >
+      <div className="lang-switch" role="group" aria-label="Kieli / Language">
         {/* Global icon */}
-        <span
-          className="lang-globe"
-          aria-hidden="true"
-          title="Language"
-        >
+        <span className="lang-globe" aria-hidden="true" title="Language">
           <i className="fa-solid fa-globe"></i>
         </span>
 
@@ -70,7 +60,6 @@ export default function Controls() {
           aria-hidden="true"
         ></i>
       </button>
-
     </div>
   );
 }

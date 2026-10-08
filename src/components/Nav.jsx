@@ -43,11 +43,7 @@ export default function Nav() {
     >
       <Container fluid className="px-3 px-md-4">
         <Navbar.Brand href="#header">
-          <img
-            className="logo"
-            src="/images/portfolio.png"
-            alt={t.siteTitle}
-          />
+          <img className="logo" src="/images/portfolio.png" alt={t.siteTitle} />
         </Navbar.Brand>
 
         {/* Language + theme: always visible, also on mobile (before the burger). */}
@@ -80,9 +76,7 @@ export default function Nav() {
                   onClick={() => setExpanded(false)}
                 >
                   <i className={`fa ${item.icon}`}></i>{" "}
-                  {item.href === "#projects"
-                    ? t.projects.title
-                    : item.label}
+                  {item.href === "#projects" ? t.projects.title : item.label}
                 </BsNav.Link>
               ))}
             </BsNav>

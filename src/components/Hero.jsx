@@ -7,10 +7,7 @@ export default function Hero({ onRequestCv }) {
   const { t, theme } = useSettings();
   const h = t.hero;
 
-  const photo =
-    theme === "dark"
-      ? "/images/photo_light.png"
-      : "/images/photo_light.png";
+  const photo = "/images/photo_light.png";
 
   return (
     <section
@@ -18,12 +15,11 @@ export default function Hero({ onRequestCv }) {
       className={`hero d-flex align-items-center justify-content-center hero-photo-${PHOTO_SIDE}`}
     >
       <div className="hero-inner">
-
         <figure className="hero-figure">
           <img
             className="hero-photo"
-            src={photo}
             alt={h.photoAlt}
+            src={photo}
             width="960"
             height="960"
             fetchPriority="high"
@@ -39,15 +35,10 @@ export default function Hero({ onRequestCv }) {
 
           <h2>{h.subtitle}</h2>
 
-          <p className="profile-text">
-            {h.profile}
-          </p>
+          <p className="profile-text">{h.profile}</p>
 
           <div className="hero-buttons d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3">
-            <Button
-              href="#projects"
-              variant="success"
-            >
+            <Button href="#projects" variant="success">
               {h.viewProjects}
             </Button>
 
@@ -79,7 +70,6 @@ export default function Hero({ onRequestCv }) {
             {h.location} &middot; {h.years}
           </p>
         </div>
-
       </div>
 
       <div className="particles"></div>

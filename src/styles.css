@@ -1,28 +1,28 @@
 :root {
   color-scheme: dark;
 
-  --accent: #ff004f;
+  --accent: #2ecc71;
   --green: #2ecc71;
   --lime: #9acd32;
   --highlight: #9acd32;
-  --muted-pink: #b54769;
+  --muted-pink: #cbd5e1;
 
   --nav-bg: rgb(23, 24, 27);
   --nav-text: #fff;
   --drawer-bg: #333;
-  --page-bg: rgb(31, 10, 10);
+  --page-bg: #071426;
 
-  --text: #e1dede;
-  --text-soft: #ddd;
-  --heading: #fff;
+  --text: #e2e8f0;
+  --text-soft: #cbd5e1;
+  --heading: #ffffff;
 
   --hero-sub: rgba(255, 255, 255, 0.9);
   --hero-body: #d1d5db;
   --proof-text: #a0aec0;
   --location-text: #94a3b8;
 
-  --section-base: #000;
-  --overlay: rgba(0, 0, 0, 0.7);
+  --section-base: #071426;
+  --overlay: rgba(3, 10, 24, 0.78);
 
   --hover-row: rgba(255, 255, 255, 0.07);
   --chip-bg: rgba(255, 255, 255, 0.05);
@@ -34,8 +34,8 @@
   --ctrl-border: rgba(255, 255, 255, 0.35);
   --ctrl-hover: rgba(255, 255, 255, 0.12);
 
-  --glow-1: rgba(0, 255, 255, 0.12);
-  --glow-2: rgba(255, 0, 79, 0.12);
+  --glow-1: rgba(0, 255, 255, 0.1);
+  --glow-2: rgba(46, 204, 113, 0.08);
 
   --glow-base-a: rgba(15, 16, 25, 0.96);
   --glow-base-b: rgba(10, 10, 16, 0.96);
@@ -44,9 +44,10 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --highlight: #4d7c0f;
-  --lime: #4d7c0f;
-  --accent: #d6003f;
+  --highlight: #287d4e;
+  --lime: #287d4e;
+  --accent: #287d4e;
+  --muted-pink: #374151;
 
   --nav-bg: #ffffff;
   --nav-text: #1f2933;
@@ -64,8 +65,8 @@
   --proof-text: #4b5563;
   --location-text: #4b5563;
 
-  --section-base: #fff;
-  --overlay: rgba(255, 255, 255, 0.88);
+  --section-base: #f8fafc;
+  --overlay: rgba(8, 18, 32, 0.08);
 
   --hover-row: rgba(0, 0, 0, 0.05);
   --chip-bg: rgba(0, 0, 0, 0.06);
@@ -77,13 +78,12 @@
   --ctrl-border: rgba(0, 0, 0, 0.35);
   --ctrl-hover: rgba(0, 0, 0, 0.08);
 
-  --glow-1: rgba(0, 150, 200, 0.1);
-  --glow-2: rgba(255, 0, 79, 0.07);
+  --glow-1: rgba(0, 150, 200, 0.07);
+  --glow-2: rgba(46, 204, 113, 0.06);
 
   --glow-base-a: rgba(244, 247, 250, 0.97);
   --glow-base-b: rgba(236, 241, 246, 0.97);
 }
-
 
 /* =========================================================
    BASE & RESET
@@ -112,7 +112,6 @@ body {
   position: relative;
 }
 
-
 /* =========================================================
    AMBIENT BACKGROUND
    ========================================================= */
@@ -127,26 +126,12 @@ body::after {
 
 body::before {
   background:
-    radial-gradient(
-      circle at top left,
-      var(--glow-1),
-      transparent 18%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      var(--glow-2),
-      transparent 20%
-    ),
-    linear-gradient(
-      180deg,
-      var(--glow-base-a),
-      var(--glow-base-b)
-    );
-
+    radial-gradient(circle at top left, var(--glow-1), transparent 18%),
+    radial-gradient(circle at bottom right, var(--glow-2), transparent 20%),
+    linear-gradient(180deg, var(--glow-base-a), var(--glow-base-b));
   z-index: -2;
   animation: backgroundDrift 20s ease-in-out infinite;
 }
-
 
 /* =========================================================
    NAVIGATION
@@ -179,7 +164,7 @@ body::before {
   bottom: 2px;
   width: 0;
   height: 3px;
-  background: var(--accent);
+  background: var(--highlight);
   transition: width 0.4s;
 }
 
@@ -189,7 +174,7 @@ body::before {
 }
 
 .site-nav .nav-link:hover i {
-  color: var(--accent);
+  color: var(--highlight);
 }
 
 .site-nav .nav-link.active,
@@ -209,7 +194,6 @@ body::before {
 .site-drawer .nav-link {
   padding: 0.9rem 0.5rem;
 }
-
 
 /* =========================================================
    SUCCESS BUTTON
@@ -236,7 +220,6 @@ body::before {
   white-space: nowrap;
 }
 
-
 /* =========================================================
    HERO SECTION
    ========================================================= */
@@ -244,29 +227,21 @@ body::before {
 .hero {
   position: relative;
   overflow: hidden;
-
   min-height: auto;
   padding: 100px 1.5rem 4rem;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   text-align: center;
-
   background-color: var(--section-base);
-
   background-image:
     linear-gradient(var(--overlay), var(--overlay)),
     url("/images/ImageBackground.png");
-
   background-size: 120% 120%;
   background-position: center;
-
   animation: backgroundMove 40s ease infinite;
 }
-
 
 /* =========================================================
    HERO AMBIENT EFFECTS
@@ -277,25 +252,18 @@ body::before {
   position: absolute;
   pointer-events: none;
   z-index: 2;
-
   opacity: 0.25;
-
   right: -100px;
   top: -50px;
-
   width: min(800px, 100vw);
   height: min(800px, 100vw);
-
   border-radius: 50%;
-
-  background:
-    repeating-radial-gradient(
-      circle,
-      rgba(0, 255, 255, 0.12) 0,
-      transparent 10px,
-      transparent 40px
-    );
-
+  background: repeating-radial-gradient(
+    circle,
+    rgba(0, 255, 255, 0.12) 0,
+    transparent 10px,
+    transparent 40px
+  );
   animation: rotateBrain 35s linear infinite;
 }
 
@@ -304,32 +272,24 @@ body::before {
   position: absolute;
   pointer-events: none;
   z-index: 2;
-
   opacity: 0.25;
-
   left: 5%;
   top: 20%;
-
   width: 35%;
   height: 45%;
-
-  background:
-    repeating-linear-gradient(
-      transparent,
-      transparent 12px,
-      rgba(0, 255, 255, 0.08) 14px
-    );
-
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 12px,
+    rgba(0, 255, 255, 0.08) 14px
+  );
   animation: scan 5s linear infinite;
 }
 
 .particles {
   position: absolute;
   inset: 0;
-
   z-index: 1;
   pointer-events: none;
-
   background-image:
     radial-gradient(
       circle at 12% 16%,
@@ -346,28 +306,18 @@ body::before {
       rgba(255, 255, 255, 0.5) 1px,
       transparent 5px
     ),
-    linear-gradient(
-      90deg,
-      rgba(0, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    );
-
+    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size:
     8% 8%,
     7% 7%,
     5% 5%,
     180px 180px,
     180px 180px;
-
   animation:
     starBlink 3.5s ease-in-out infinite alternate,
     lineDrift 18s linear infinite;
 }
-
 
 /* =========================================================
    HERO CONTENT
@@ -376,26 +326,18 @@ body::before {
 .header-text {
   position: relative;
   z-index: 5;
-
   width: 100%;
   max-width: 760px;
-
   margin: 0 auto;
-
   text-align: center;
 }
 
 .header-text .hello-text {
   font-size: clamp(16px, 1.2vw, 20px);
-
   font-weight: 400;
-
   letter-spacing: -0.3px;
-
   color: var(--heading);
-
   margin-bottom: 0.75rem;
-
   line-height: 1.25;
 }
 
@@ -404,70 +346,43 @@ body::before {
   font-weight: 800;
 }
 
-
 /* Main heading */
-
 .header-text h1 {
   font-size: clamp(34px, 3.5vw, 58px);
-
   font-weight: 800;
-
   line-height: 1.15;
-
   letter-spacing: -0.5px;
-
   margin-bottom: 1.25rem;
-
   color: var(--heading);
 }
 
-
 /* Subtitle */
-
 .header-text h2 {
   font-size: clamp(18px, 1.9vw, 27px);
-
   font-weight: 600;
-
   line-height: 1.4;
-
   color: var(--hero-sub);
-
   margin-bottom: 1.25rem;
 }
 
-
 /* Profile */
-
 .header-text .profile-text {
   font-size: clamp(16px, 1.45vw, 20px);
-
   line-height: 1.65;
-
   color: var(--hero-body);
-
   max-width: 700px;
-
   margin: 0 auto 1.75rem;
 }
 
-
 /* Hero buttons */
-
 .header-text .d-flex {
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   gap: 10px;
-
   margin-bottom: 1.75rem;
 }
-
 
 /* =========================================================
    PROOF + LOCATION
@@ -475,42 +390,28 @@ body::before {
 
 .proof-row {
   display: flex;
-
   flex-wrap: wrap;
-
   justify-content: center;
-
   align-items: center;
-
   gap: 10px 18px;
-
   margin-top: 0.5rem;
-
   font-size: clamp(12px, 1.3vw, 15px);
-
   color: var(--proof-text);
 }
 
 .proof-row span:not(:last-child)::after {
   content: "|";
-
   margin-left: 18px;
-
   opacity: 0.35;
 }
 
 .location-line {
   margin-top: 0.85rem;
-
   font-size: clamp(12px, 1.3vw, 15px);
-
   color: var(--location-text);
-
   font-weight: 500;
-
   text-align: center;
 }
-
 
 /* =========================================================
    HERO PHOTO / LAYOUT
@@ -518,21 +419,13 @@ body::before {
 
 .hero-inner {
   position: relative;
-
   z-index: 5;
-
   width: 100%;
-
   max-width: 1280px;
-
   margin: 0 auto;
-
   display: grid;
-
   grid-template-columns: minmax(0, 1fr);
-
   gap: 2rem;
-
   align-items: center;
 }
 
@@ -540,106 +433,58 @@ body::before {
   z-index: auto;
 }
 
-
 /* Mobile: image above text */
-
 .hero-figure {
   order: -1;
-
   width: 100%;
-
   max-width: 340px;
-
   margin: 0 auto;
 }
 
-
 /*
   Keep the complete photograph visible.
-
-  Do not use:
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  Do not use: aspect-ratio: 1 / 1; object-fit: cover;
 */
-
 .hero-photo {
   display: block;
-
   width: 100%;
-
   height: auto;
-
   aspect-ratio: auto;
-
   object-fit: contain;
-
   border-radius: 20px;
-
   border: 2px solid var(--green);
-
   box-shadow:
     0 0 0 6px rgba(46, 204, 113, 0.15),
     0 18px 45px rgba(0, 0, 0, 0.45);
 }
 
-
 /* =========================================================
-   DESKTOP HERO
+   DESKTOP HERO  (photo left, centered text right)
    ========================================================= */
 
-/*
-  Desktop layout:
-
-  ┌──────────────────────┬──────────────────────────┐
-  │                      │                          │
-  │       PHOTO          │       HELLO              │
-  │       LEFT           │       NAME               │
-  │                      │       TITLE              │
-  │                      │       PROFILE            │
-  │                      │       BUTTONS            │
-  │                      │       PROOF              │
-  │                      │       LOCATION           │
-  │                      │                          │
-  └──────────────────────┴──────────────────────────┘
-
-  Text remains CENTERED inside the right column.
-*/
-
 @media (min-width: 992px) {
-
   .hero-inner {
-    grid-template-columns:
-      minmax(320px, 460px)
-      minmax(0, 1fr);
-
+    grid-template-columns: minmax(320px, 460px) minmax(0, 1fr);
     gap: 4rem;
-
     align-items: center;
   }
 
   .hero-figure {
     order: 0;
-
     width: 100%;
-
     max-width: 460px;
-
     margin: 0 auto;
   }
 
   .hero-photo {
     width: 100%;
-
     max-width: 460px;
   }
 
   .hero-inner .header-text {
     width: 100%;
-
     max-width: 760px;
-
     margin: 0 auto;
-
     text-align: center;
   }
 
@@ -649,25 +494,19 @@ body::before {
 
   .hero-inner .header-text h1 {
     text-align: center;
-
     font-size: clamp(40px, 3.5vw, 58px);
   }
 
   .hero-inner .header-text h2 {
     text-align: center;
-
     font-size: clamp(18px, 1.9vw, 27px);
   }
 
   .hero-inner .header-text .profile-text {
     text-align: center;
-
     max-width: 700px;
-
     margin-left: auto;
-
     margin-right: auto;
-
     font-size: clamp(16px, 1.45vw, 20px);
   }
 
@@ -677,7 +516,6 @@ body::before {
 
   .hero-inner .proof-row {
     justify-content: center;
-
     text-align: center;
   }
 
@@ -686,35 +524,23 @@ body::before {
   }
 }
 
-
 /* =========================================================
    LIGHT THEME HERO PHOTO
    ========================================================= */
 
 :root[data-theme="light"] .hero-figure {
   padding: 8px;
-
   border-radius: 28px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #ffffff,
-      #f1f5f9
-    );
-
-  box-shadow:
-    0 12px 35px rgba(15, 23, 42, 0.12);
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
 }
 
 :root[data-theme="light"] .hero-photo {
   border-color: var(--green);
-
   box-shadow:
     0 0 0 3px rgba(46, 204, 113, 0.12),
     0 8px 24px rgba(15, 23, 42, 0.18);
 }
-
 
 /* =========================================================
    CONTENT SECTIONS
@@ -722,107 +548,72 @@ body::before {
 
 .page-section {
   position: relative;
-
   overflow: hidden;
-
   min-height: auto;
-
   padding: 3rem 1.25rem;
-
   color: var(--text);
-
   text-align: center;
-
   background-color: var(--section-base);
-
   background-image:
     linear-gradient(var(--overlay), var(--overlay)),
     url("/images/ImageBackground.png");
-
-  background-size: 120% 120%;
-
+  /* Polish: no excessive cropping of the background image */
+  background-size: cover;
   background-position: center;
-
   animation: backgroundMove 40s ease infinite;
 }
 
 .sub-title {
   font-size: clamp(22px, 3.5vw, 32px);
-
   font-weight: 600;
-
   margin-bottom: 1rem;
 }
 
 .about-text {
   max-width: 750px;
-
   margin: 0 auto 1.5rem;
-
   font-size: clamp(14px, 1.8vw, 18px);
-
   line-height: 1.6;
-
   color: var(--text-soft);
 }
 
-
 /* =========================================================
-   ABOUT TABS
+   ABOUT TABS (base)
    ========================================================= */
 
 .tab-titles {
   display: flex;
-
   flex-wrap: wrap;
-
   justify-content: center;
-
   gap: 0.75rem 2rem;
-
   margin: 1.25rem 0 1.75rem;
 }
 
 .tab-links {
   position: relative;
-
   padding: 0 0 0.4rem;
-
   border: 0;
-
   background: none;
-
   color: var(--heading);
-
   font-size: clamp(15px, 2.2vw, 22px);
-
   font-weight: 500;
-
   cursor: pointer;
-
   transition: color 0.3s;
 }
 
 .tab-links:hover,
 .tab-links.active-link {
-  color: var(--accent);
+  color: var(--highlight);
 }
 
 .tab-links::after {
   content: "";
-
   position: absolute;
-
   left: 0;
-
   bottom: 0;
-
   width: 0;
-
   height: 3px;
-
-  background: var(--accent);
-
+  background: var(--highlight);
   transition: width 0.3s;
 }
 
@@ -832,23 +623,16 @@ body::before {
 
 .tab-list {
   max-width: 850px;
-
   margin: 0 auto;
-
   text-align: left;
-
   font-size: clamp(13px, 1.6vw, 17px);
-
   word-break: break-word;
 }
 
 .tab-list li {
   margin: 0.5rem 0;
-
   padding: 0.5rem 0.75rem;
-
   border-radius: 6px;
-
   transition: background-color 0.3s;
 }
 
@@ -858,10 +642,158 @@ body::before {
 
 .tab-list li span {
   color: var(--muted-pink);
-
   font-size: 1.05em;
 }
 
+/* =========================================================
+   ABOUT SECTION (polish: tabs, recommendations, certificates)
+   ========================================================= */
+
+#about .sub-title {
+  color: var(--heading);
+  margin-bottom: 0.9rem;
+}
+
+#about .about-text {
+  max-width: 780px;
+  margin-bottom: 1.75rem;
+}
+
+#about .tab-titles {
+  gap: 0.65rem 1.6rem;
+  margin: 1.4rem 0 1.8rem;
+}
+
+#about .tab-links {
+  color: var(--text-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+}
+
+#about .tab-links.active-link,
+#about .tab-links:hover {
+  color: var(--highlight);
+}
+
+#about .tab-list {
+  max-width: 900px;
+  line-height: 1.7;
+}
+
+#about .tab-list > li {
+  padding: 0.9rem 1rem;
+  margin: 0.55rem 0;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 8px;
+}
+
+#about .experience-date,
+#about .recommendation-author,
+#about .about-accent {
+  color: var(--highlight);
+}
+
+#about .about-item-text,
+#about .recommendation-meta,
+#about .recommendation-quote,
+#about .certificate-description {
+  color: var(--text-soft);
+}
+
+/* LinkedIn recommendation cards */
+#about .recommendation-card {
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--card-border);
+  border-left: 3px solid var(--green);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+#about .recommendation-card:hover {
+  background: var(--hover-row);
+}
+
+#about .recommendation-quote {
+  display: block;
+  white-space: pre-line;
+  font-style: normal;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+#about .recommendation-meta {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#about .recommendation-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--card-border);
+}
+
+/* Certificates */
+#about .certificate-panel {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ctrl-border);
+}
+
+#about .certificate-button,
+#about .linkedin-recommendations-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 40px;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--heading);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#about .certificate-button:hover,
+#about .linkedin-recommendations-button:hover {
+  background: var(--green);
+  color: #06210f;
+  transform: translateY(-1px);
+}
+
+#about .certificate-button:focus-visible,
+#about .linkedin-recommendations-button:focus-visible {
+  outline: 3px solid var(--highlight);
+  outline-offset: 3px;
+}
+
+/* Light theme cards */
+:root[data-theme="light"] #about .tab-list > li,
+:root[data-theme="light"] #about .recommendation-card {
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+:root[data-theme="light"] #about .certificate-button,
+:root[data-theme="light"] #about .linkedin-recommendations-button {
+  color: #1f2933;
+}
+
+:root[data-theme="light"] #about .certificate-button:hover,
+:root[data-theme="light"] #about .linkedin-recommendations-button:hover {
+  color: #06210f;
+}
 
 /* =========================================================
    CARDS
@@ -870,18 +802,11 @@ body::before {
 .project-card,
 .publication-card {
   position: relative;
-
   overflow: hidden;
-
   height: 100%;
-
   color: #212529;
-
   border: 1px solid var(--card-border);
-
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.1);
-
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -891,19 +816,15 @@ body::before {
 .project-card:hover,
 .publication-card:hover {
   transform: translateY(-6px);
-
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.35),
     0 0 18px rgba(0, 123, 255, 0.18);
-
   border-color: rgba(0, 123, 255, 0.35);
 }
 
 .project-card .card-img-top {
   height: 200px;
-
   object-fit: cover;
-
   transition: transform 0.4s ease;
 }
 
@@ -911,56 +832,39 @@ body::before {
   transform: scale(1.03);
 }
 
-
 /* =========================================================
    CONTACT
    ========================================================= */
 
 .contact-line {
   margin: 1.25rem 0 0;
-
   overflow-wrap: anywhere;
 }
 
 .contact-line i {
   color: var(--link-icon);
-
   margin-right: 12px;
-
   font-size: 22px;
-
   vertical-align: middle;
 }
 
 .social-icons {
   display: flex;
-
   flex-wrap: wrap;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 1.25rem;
-
   margin-top: 1.25rem;
 }
 
 .social-icons a {
   display: inline-flex;
-
   flex-direction: column;
-
   align-items: center;
-
   gap: 4px;
-
   font-size: 18px;
-
   color: var(--link-icon);
-
   text-decoration: none;
-
   transition:
     color 0.3s,
     transform 0.3s;
@@ -968,10 +872,8 @@ body::before {
 
 .social-icons a:hover {
   color: #58d68d;
-
   transform: translateY(-2px);
 }
-
 
 /* =========================================================
    FOOTER
@@ -979,16 +881,11 @@ body::before {
 
 .footer {
   background: var(--page-bg);
-
   color: var(--footer-text);
-
   padding: 16px 20px;
-
   text-align: center;
-
   font-size: clamp(12px, 1.4vw, 15px);
 }
-
 
 /* =========================================================
    LANGUAGE + THEME CONTROLS
@@ -996,101 +893,59 @@ body::before {
 
 .site-controls {
   display: flex;
-
   align-items: center;
-
   gap: 0.5rem;
-
   margin-left: auto;
-
   margin-right: 0.5rem;
 }
 
-
 /* Language switcher */
-
 .lang-switch {
   display: inline-flex;
-
   align-items: center;
-
   gap: 2px;
-
   height: 40px;
-
   padding: 3px 4px;
-
   border: 1px solid var(--ctrl-border);
-
   border-radius: 999px;
-
   background: transparent;
-
   color: var(--nav-text);
-
   transition:
     background-color 0.25s,
     border-color 0.25s,
     color 0.25s;
 }
 
-
 /* Global language icon */
-
 .lang-globe {
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   width: 28px;
-
   height: 32px;
-
   margin-left: 2px;
-
   color: var(--nav-text);
-
   font-size: 0.9rem;
-
   opacity: 0.9;
 }
 
-
 /* FI / EN buttons */
-
 .lang-switch button {
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-width: 34px;
-
   height: 32px;
-
   padding: 0 8px;
-
   border: none;
-
   border-radius: 999px;
-
   background: transparent;
-
   color: var(--nav-text);
-
   font-size: 0.75rem;
-
   font-weight: 700;
-
   line-height: 1;
-
   letter-spacing: 0.3px;
-
   cursor: pointer;
-
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
@@ -1102,50 +957,31 @@ body::before {
 
 .lang-switch button.active {
   background: var(--green);
-
   color: #ffffff;
 }
 
 .lang-switch button:focus-visible {
   outline: 2px solid var(--green);
-
   outline-offset: 2px;
 }
 
-
 /* Generic control button */
-
 .ctrl-btn {
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 6px;
-
   min-width: 40px;
-
   height: 40px;
-
   padding: 0 0.7rem;
-
   border: 1px solid var(--ctrl-border);
-
   border-radius: 999px;
-
   background: transparent;
-
   color: var(--nav-text);
-
   font-size: 0.85rem;
-
   font-weight: 600;
-
   line-height: 1;
-
   cursor: pointer;
-
   transition:
     background-color 0.25s,
     border-color 0.25s,
@@ -1154,13 +990,11 @@ body::before {
 
 .ctrl-btn:hover {
   background: var(--ctrl-hover);
-
   border-color: var(--green);
 }
 
 .ctrl-btn:focus-visible {
   outline: 2px solid var(--green);
-
   outline-offset: 2px;
 }
 
@@ -1168,51 +1002,39 @@ body::before {
   font-size: 1rem;
 }
 
-
 /* Desktop controls */
-
 @media (min-width: 768px) {
   .site-controls {
     order: 5;
-
     margin-left: 1rem;
-
     margin-right: 0;
   }
 }
-
 
 /* =========================================================
    VERY SMALL PHONES
    ========================================================= */
 
 @media (max-width: 380px) {
-
   .lang-globe {
     width: 24px;
-
     margin-left: 1px;
   }
 
   .lang-switch button {
     min-width: 30px;
-
     padding: 0 6px;
-
     font-size: 0.7rem;
   }
 }
-
 
 /* =========================================================
    TABLET / MOBILE
    ========================================================= */
 
 @media (max-width: 991.98px) {
-
   .hero-inner {
     padding-left: 1rem;
-
     padding-right: 1rem;
   }
 
@@ -1237,16 +1059,13 @@ body::before {
   }
 }
 
-
 /* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 767.98px) {
-
   .hero {
     padding-top: 85px;
-
     padding-bottom: 3rem;
   }
 
@@ -1260,7 +1079,6 @@ body::before {
 
   .hero-figure {
     order: -1;
-
     max-width: 340px;
   }
 
@@ -1285,20 +1103,15 @@ body::before {
   }
 }
 
-
 /* =========================================================
    SMALL PHONES
    ========================================================= */
 
 @media (max-width: 575.98px) {
-
   .hero::before {
     right: -50px;
-
     top: -20px;
-
     width: 300px;
-
     height: 300px;
   }
 
@@ -1324,13 +1137,11 @@ body::before {
 
   .header-text .profile-text {
     font-size: 15px;
-
     line-height: 1.6;
   }
 
   .proof-row {
     gap: 8px 12px;
-
     font-size: 12px;
   }
 
@@ -1340,17 +1151,37 @@ body::before {
 
   .proof-row span {
     background: var(--chip-bg);
-
     padding: 3px 8px;
-
     border-radius: 4px;
   }
 
   .location-line {
     font-size: 12px;
   }
-}
 
+  /* About section (polish) */
+  #about .tab-titles {
+    gap: 0.65rem 1rem;
+  }
+
+  #about .tab-links {
+    font-size: 0.95rem;
+  }
+
+  #about .tab-list > li {
+    padding: 0.85rem;
+  }
+
+  #about .recommendation-card {
+    padding: 1rem;
+  }
+
+  #about .certificate-button,
+  #about .linkedin-recommendations-button {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 /* =========================================================
    LIGHT-THEME DETAILS
@@ -1360,11 +1191,7 @@ body::before {
   opacity: 0.8;
 }
 
-
-/*
-  Outline-light buttons are invisible on a light background.
-*/
-
+/* Outline-light buttons are invisible on a light background. */
 :root[data-theme="light"] .btn-hero-outline {
   --bs-btn-color: #1f2933;
   --bs-btn-border-color: #1f2933;
@@ -1378,17 +1205,12 @@ body::before {
   --bs-btn-active-border-color: #1f2933;
 }
 
-
 /* Light navigation */
-
 :root[data-theme="light"] .site-nav {
-  box-shadow:
-    0 1px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
 }
 
-
 /* Light contact */
-
 :root[data-theme="light"] .contact-line,
 :root[data-theme="light"] .text-success {
   color: var(--text);
@@ -1397,7 +1219,6 @@ body::before {
 :root[data-theme="light"] .text-success {
   color: #157a40 !important;
 }
-
 
 /* =========================================================
    ANIMATIONS
@@ -1413,7 +1234,6 @@ body::before {
   from {
     transform: translateY(-25px);
   }
-
   to {
     transform: translateY(25px);
   }
@@ -1424,7 +1244,6 @@ body::before {
   100% {
     opacity: 0.8;
   }
-
   50% {
     opacity: 0.3;
   }
@@ -1439,7 +1258,6 @@ body::before {
       0 0,
       0 0;
   }
-
   100% {
     background-position:
       12% 16%,
@@ -1455,7 +1273,6 @@ body::before {
   100% {
     background-position: 30% 30%;
   }
-
   50% {
     background-position: 70% 70%;
   }
@@ -1466,28 +1283,23 @@ body::before {
   100% {
     transform: translate(0, 0) scale(1);
   }
-
   50% {
     transform: translate(-12%, 10%) scale(1.08);
   }
 }
-
 
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
     animation: none !important;
-
     transition: none !important;
   }
 }
-
 
 /* =========================================================
    THEME TRANSITION

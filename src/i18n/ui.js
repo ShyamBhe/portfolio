@@ -24,7 +24,7 @@ export const ui = {
       subtitle:
         "Engineering multimodal AI, full-stack software, and intelligent systems for real-world applications.",
       profile:
-        "\"Rapid advancements in AI is changing how the world works. I research and build intelligent software systems that bring AI and machine learning models into real-world applications. My work combines software engineering, multimodal AI, MLLMs, training models, transfer learning, LLMs, computer vision, data, and sensor-driven systems to turn complex research ideas into practical solutions.\"",
+        '"Rapid advancements in AI is changing how the world works. I research and build intelligent software systems that bring AI and machine learning models into real-world applications. My work combines software engineering, multimodal AI, MLLMs, training models, transfer learning, LLMs, computer vision, data, and sensor-driven systems to turn complex research ideas into practical solutions."',
       viewProjects: "View Projects",
       requestCv: "Request CV",
       contactMe: "Contact Me",
@@ -43,7 +43,11 @@ export const ui = {
     about: {
       title: "About Myself",
       text: "I am working as Lead AI and Software Engineer and graduated with a Master\u2019s Degree in Software and AI Data Engineering from the University of Turku.",
-      tabs: { skills: "Skills", experiences: "Experiences", education: "Education" },
+      tabs: {
+        skills: "Skills",
+        experiences: "Experiences",
+        education: "Education",
+      },
     },
 
     projects: { title: "Works & Projects" },
@@ -79,8 +83,8 @@ export const ui = {
       no: "No problem! You can request if you need anytime later also.",
     },
 
-footer:
-  "© 2026 Shyam Bhetuwal. All rights reserved. | Personal data presented in this profile and shared through this profile is protected and intended to be handled in accordance with applicable European data protection law (GDPR).",
+    footer:
+      "© 2026 Shyam Bhetuwal. All rights reserved. | Personal data presented in this profile and shared through this profile is protected and intended to be handled in accordance with applicable European data protection law (GDPR).",
   },
 
   fi: {
@@ -106,7 +110,7 @@ footer:
       subtitle:
         "Rakennan multimodaalista tekoälyä, full-stack-ohjelmistoja ja älykkäitä järjestelmiä todellisiin käyttötarkoituksiin.",
       profile:
-        "\"Tekoälyn nopea kehitys muuttaa tapaa, jolla maailma toimii. Tutkin ja rakennan älykkäitä ohjelmistojärjestelmiä, jotka tuovat tekoäly- ja koneoppimismallit todellisiin sovelluksiin. Työni yhdistää ohjelmistotekniikan, multimodaalisen tekoälyn, MLLM-mallit, mallien koulutuksen, siirto-oppimisen, LLM-mallit, konenäön, datan ja anturipohjaiset järjestelmät, jotta monimutkaiset tutkimusideat saadaan muutettua käytännön ratkaisuiksi.\"",
+        '"Tekoälyn nopea kehitys muuttaa tapaa, jolla maailma toimii. Tutkin ja rakennan älykkäitä ohjelmistojärjestelmiä, jotka tuovat tekoäly- ja koneoppimismallit todellisiin sovelluksiin. Työni yhdistää ohjelmistotekniikan, multimodaalisen tekoälyn, MLLM-mallit, mallien koulutuksen, siirto-oppimisen, LLM-mallit, konenäön, datan ja anturipohjaiset järjestelmät, jotta monimutkaiset tutkimusideat saadaan muutettua käytännön ratkaisuiksi."',
       viewProjects: "Katso projektit",
       requestCv: "Pyydä CV",
       contactMe: "Ota yhteyttä",
@@ -125,7 +129,12 @@ footer:
     about: {
       title: "Tietoa minusta",
       text: "Työskentelen johtavana tekoäly- ja ohjelmistoinsinöörinä ja valmistuin maisteriksi (Software and AI Data Engineering) Turun yliopistosta.",
-      tabs: { skills: "Taidot", experiences: "Työkokemus", education: "Koulutus" },
+      tabs: {
+        skills: "Taidot",
+        experiences: "Työkokemus",
+        education: "Koulutus",
+        recommendations: "Suositukset",
+      },
     },
 
     projects: { title: "Työt & Projektit" },
@@ -135,7 +144,8 @@ footer:
       text: "Valikoituja tutkimustuloksia AIoT- ja konenäkötyöstäni Turun yliopistossa. Kokoteksti on linkitetty, kun se on julkisesti saatavilla.",
       view: "Katso ResearchGatessa",
       profile: "Katso koko ResearchGate-profiili",
-      titlesNote: "Julkaisujen nimet on esitetty alkuperäisellä englannin kielellä.",
+      titlesNote:
+        "Julkaisujen nimet on esitetty alkuperäisellä englannin kielellä.",
     },
 
     contact: {
@@ -162,6 +172,6 @@ footer:
     },
 
     footer:
-   "© 2026 Shyam Bhetuwal. Kaikki oikeudet pidätetään. | Tässä profiilissa esitettyjä ja profiilin kautta jaettuja henkilötietoja suojataan ja niitä käsitellään sovellettavan Euroopan tietosuojalainsäädännön (GDPR) mukaisesti.",
+      "© 2026 Shyam Bhetuwal. Kaikki oikeudet pidätetään. | Tässä profiilissa esitettyjä ja profiilin kautta jaettuja henkilötietoja suojataan ja niitä käsitellään sovellettavan Euroopan tietosuojalainsäädännön (GDPR) mukaisesti.",
   },
 };

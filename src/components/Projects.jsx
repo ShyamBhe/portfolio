@@ -21,17 +21,29 @@ export default function Projects() {
           {projects.map((project) => (
             <Col key={project.id} xs={12} md={6} lg={4}>
               <Card className="project-card h-100">
-                <Card.Img variant="top" src={project.image} alt={project.title} />
+                <Card.Img
+                  variant="top"
+                  src={project.image}
+                  alt={project.title}
+                />
                 <Card.Body className="d-flex flex-column">
                   <Card.Title as="h4">{project.title}</Card.Title>
                   <Card.Text>{project.text}</Card.Text>
                   <div className="mt-auto">
                     {project.action.type === "anchor" ? (
-                      <Button variant="success" size="sm" href={project.action.url}>
+                      <Button
+                        variant="success"
+                        size="sm"
+                        href={project.action.url}
+                      >
                         {project.action.label}
                       </Button>
                     ) : (
-                      <Button variant="success" size="sm" onClick={() => handleAction(project)}>
+                      <Button
+                        variant="success"
+                        size="sm"
+                        onClick={() => handleAction(project)}
+                      >
                         {project.action.label}
                       </Button>
                     )}

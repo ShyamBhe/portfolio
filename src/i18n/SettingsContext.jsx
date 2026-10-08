@@ -1,4 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { LANGS, ui } from "./ui.js";
 import { getContent } from "./content.js";
 
@@ -24,7 +31,11 @@ function writeStored(key, value) {
 function initialLang() {
   const stored = readStored(LANG_KEY);
   if (LANGS.includes(stored)) return stored;
-  const browser = (navigator.languages?.[0] ?? navigator.language ?? "en").toLowerCase();
+  const browser = (
+    navigator.languages?.[0] ??
+    navigator.language ??
+    "en"
+  ).toLowerCase();
   return browser.startsWith("fi") ? "fi" : "en";
 }
 
@@ -59,10 +70,13 @@ export function SettingsProvider({ children }) {
     writeStored(THEME_KEY, theme);
   }, [theme]);
 
-  const toggleLang = useCallback(() => setLang((l) => (l === "en" ? "fi" : "en")), []);
+  const toggleLang = useCallback(
+    () => setLang((l) => (l === "en" ? "fi" : "en")),
+    [],
+  );
   const toggleTheme = useCallback(
     () => setTheme((t) => (t === "dark" ? "light" : "dark")),
-    []
+    [],
   );
 
   const value = useMemo(
@@ -74,14 +88,19 @@ export function SettingsProvider({ children }) {
       t: ui[lang],
       content: getContent(lang),
     }),
-    [lang, theme, toggleLang, toggleTheme]
+    [lang, theme, toggleLang, toggleTheme],
   );
 
-  return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
+  return (
+    <SettingsContext.Provider value={value}>
+      {children}
+    </SettingsContext.Provider>
+  );
 }
 
 export function useSettings() {
   const ctx = useContext(SettingsContext);
-  if (!ctx) throw new Error("useSettings must be used inside <SettingsProvider>");
+  if (!ctx)
+    throw new Error("useSettings must be used inside <SettingsProvider>");
   return ctx;
 }

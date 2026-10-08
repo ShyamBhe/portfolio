@@ -17,11 +17,12 @@ function systemPromptFor(lang) {
   const profile = JSON.stringify(
     { skills, experience, education, projects, publications, contact },
     null,
-    1
+    1,
   );
   const language = LANGUAGE_NAMES[lang];
 
-  prompts[lang] = `You are the portfolio assistant on Shyam Bhetuwal's personal website.
+  prompts[lang] =
+    `You are the portfolio assistant on Shyam Bhetuwal's personal website.
 Answer visitors' questions about Shyam using ONLY the data below.
 Rules:
 - Refer to Shyam in the third person.
@@ -43,7 +44,9 @@ export default async (req) => {
 
   try {
     const body = await req.json();
-    const message = String(body?.message ?? "").trim().slice(0, 500);
+    const message = String(body?.message ?? "")
+      .trim()
+      .slice(0, 500);
     const lang = body?.lang === "fi" ? "fi" : "en";
 
     if (!message) {

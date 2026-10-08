@@ -2,147 +2,207 @@ import { useState } from "react";
 import { Container } from "react-bootstrap";
 import { useSettings } from "../i18n/SettingsContext.jsx";
 
-const DEFAULT_RECOMMENDATIONS = [
-  {
-    author: "Kirsi Laitinen",
-    title: "Professor, Institute of Biomedicine and Director, Nutrition and Food Research Center",
-    organization: "Faculty of Medicine, University of Turku",
-    text: "I had the opportunity to work with Mr. Bhetuwal in the Flavoria Flex project at the University of Turku. He contributed to the development of AI-driven solutions integrating machine learning, data analytics, and sensing technologies. He demonstrated strong technical skills, a research-oriented approach, and the ability to work effectively in multidisciplinary teams. His work also contributed to scientific publications. I recommend him for positions in AI, software engineering, and research and development.",
-  },
-  {
-    author: "Tuomas Mäkilä",
-    title: "Assistant Professor of Digital Transformation",
-    organization: "University of Turku",
-    text: "I supervised Shyam Bhetuwal's Master's thesis and his research and development work in the Business Finland-funded Flavoria Flex project at the University of Turku. Throughout this work, Shyam has demonstrated a strong ability to bridge applied AI research with practical software engineering, contributing across the R&D lifecycle, including research, AI model evaluation, full-stack development, data pipelines, system integration, and real-world testing.\n\nA particularly noteworthy aspect of his work was his contribution to developing approaches for validating and correcting AI-generated food predictions using contextual, standardized, and ground-truth data. This work demonstrated his ability to combine research-oriented thinking with practical technical implementation. His contributions have also resulted in three scientific publications, two of which he led as first author.\n\nShyam is highly self-motivated, research-oriented, technically capable, and effective in interdisciplinary collaboration. He combines strong software engineering skills with a solid understanding of AI and machine learning, as well as the ability to approach complex problems systematically and develop practical solutions.\n\nI strongly recommend Shyam for positions as a Project Researcher, Full-Stack Developer, Software Engineer, or AI/ML Engineer, particularly in areas combining applied AI, intelligent systems, software engineering, and research and development. I am confident that his technical skills, research capabilities, and ability to work effectively across disciplines will enable him to make valuable contributions in both academic research and practical development work.",
-  },
-];
-
 export default function About() {
-  const { t, content, theme } = useSettings();
+  const { t, content } = useSettings();
   const [activeTab, setActiveTab] = useState("skills");
 
-  const recommendationsList = content.recommendations || DEFAULT_RECOMMENDATIONS;
-
   const tabs = [
-    { id: "skills", icon: "fa-code", items: content.skills },
-    { id: "experiences", icon: "fa-briefcase", items: content.experience },
-    { id: "education", icon: "fa-graduation-cap", items: content.education },
-    { id: "recommendations", icon: "fa-comments", items: recommendationsList },
+    {
+      id: "skills",
+      icon: "fa-code",
+      items: content.skills || [],
+    },
+    {
+      id: "experiences",
+      icon: "fa-briefcase",
+      items: content.experience || [],
+    },
+    {
+      id: "education",
+      icon: "fa-graduation-cap",
+      items: content.education || [],
+    },
+    {
+      id: "recommendations",
+      icon: "fa-comments",
+      items: content.recommendations || [],
+    },
   ];
 
-  const current = tabs.find((tab) => tab.id === activeTab);
-  const btnVariant = theme === "dark" ? "outline-light" : "outline-dark";
+  const current = tabs.find((tab) => tab.id === activeTab) || tabs[0];
 
   return (
     <section id="about" className="page-section">
       <Container>
         <h2 className="sub-title">{t.about.title}</h2>
+
         <p className="about-text">{t.about.text}</p>
 
-        <div className="tab-titles" role="tablist">
+        <div className="tab-titles" role="tablist" aria-label="About sections">
           {tabs.map((tab) => (
             <button
               key={tab.id}
+              id={`about-tab-${tab.id}`}
               type="button"
               role="tab"
               aria-selected={activeTab === tab.id}
-              className={`tab-links${activeTab === tab.id ? " active-link" : ""}`}
+              aria-controls="about-tab-panel"
+              className={`tab-links${
+                activeTab === tab.id ? " active-link" : ""
+              }`}
               onClick={() => setActiveTab(tab.id)}
             >
-              <i className={`fa-solid ${tab.icon}`}></i>{" "}
+              <i className={`fa-solid ${tab.icon}`} aria-hidden="true" />{" "}
               {t.about.tabs?.[tab.id] ||
-                (tab.id === "recommendations" ? "Recommendations" : tab.id)}
-              <i className="fa-solid fa-chevron-down tab-arrow"></i>
+                (tab.id === "recommendations"
+                  ? "Recommendations"
+                  : tab.id.charAt(0).toUpperCase() + tab.id.slice(1))}
+              <i
+                className="fa-solid fa-chevron-down tab-arrow"
+                aria-hidden="true"
+              />
             </button>
           ))}
         </div>
 
-        <ul className="list-unstyled tab-list" role="tabpanel">
+        <div
+          id="about-tab-panel"
+          className="tab-list"
+          role="tabpanel"
+          aria-labelledby={`about-tab-${activeTab}`}
+          tabIndex={0}
+        >
           {activeTab === "recommendations" ? (
             <>
+              {current.items.length > 0 ? (
+                <div className="recommendations-list">
+                  {current.items.map((item, idx) => (
+                    <article
+                      className="recommendation-card mb-3"
+                      key={item.author || idx}
+                    >
+                      <h3 className="recommendation-author h5 mb-1">
+                        {item.author}
+                      </h3>
+
+                      <span className="recommendation-meta">
+                        {item.title || ""}
+                        {item.title && item.organization ? " · " : ""}
+                        {item.organization || ""}
+                      </span>
+
+                      {item.text && (
+                        <div className="recommendation-quote mt-3">
+                          {item.text.split("\n\n").map((paragraph, pIdx) => (
+                            <p key={pIdx} className="mb-3">
+                              “{paragraph}”
+                            </p>
+                          ))}
+                        </div>
+                      )}
+
+                      {item.email && (
+                        <div className="recommendation-contact">
+                          <a
+                            href={`mailto:${item.email}`}
+                            className="recommendation-contact-link"
+                            aria-label={`Email ${item.author} at ${item.email}`}
+                          >
+                            <i
+                              className="fa-solid fa-envelope"
+                              aria-hidden="true"
+                            />
+                            Email: {item.email}
+                          </a>
+                        </div>
+                      )}
+                    </article>
+                  ))}
+                </div>
+              ) : (
+                <p className="about-item-text">No recommendations available.</p>
+              )}
+
+              <div className="recommendation-footer">
+                <p className="recommendation-meta mb-2">
+                  More recommendations are available on LinkedIn.
+                </p>
+
+                <a
+                  href="https://www.linkedin.com/in/rshyam-bhetuwal/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="linkedin-recommendations-button"
+                >
+                  <i className="fa-brands fa-linkedin" aria-hidden="true" />
+                  View LinkedIn Recommendations
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </>
+          ) : activeTab === "experiences" ? (
+            <>
+              <ul className="list-unstyled mb-0">
+                {current.items.map((item, idx) => (
+                  <li key={item.label ?? item.period ?? idx}>
+                    <strong className="experience-date">
+                      {item.label ?? item.period}
+                    </strong>
+
+                    <span className="about-item-text d-block mt-1">
+                      {item.text}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <section
+                className="certificate-panel"
+                aria-labelledby="certificates-heading"
+              >
+                <h3
+                  id="certificates-heading"
+                  className="about-section-heading h5 fw-bold mb-2"
+                >
+                  <i
+                    className="fa-solid fa-shield-halved about-accent me-2"
+                    aria-hidden="true"
+                  />
+                  Previous Work Certificates
+                </h3>
+
+                <p className="certificate-description">
+                  Early career work certificates and recommendations
+                </p>
+
+                <a
+                  href="/OtherWorkCertificates_.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="certificate-button"
+                >
+                  <i className="fa-solid fa-file-pdf" aria-hidden="true" />
+                  View Work Certificates (PDF)
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </section>
+            </>
+          ) : (
+            <ul className="list-unstyled mb-0">
               {current.items.map((item, idx) => (
-                <li key={item.author || idx} className="mb-4">
-                  {/* Title/Author in Red */}
-                  <span
-                    className="fw-bold fs-5"
-                    style={{ color: "#ff004f" }}
-                  >
-                    {item.author}
-                  </span>{" "}
-                  {/* Subtitle/Organization in Whitish */}
-                  <small
-                    className="fw-normal"
-                    style={{
-                      color: theme === "dark" ? "#e0e0e0" : "#6c757d",
-                    }}
-                  >
-                    {item.title ? `· ${item.title}` : ""}{" "}
-                    {item.organization ? `(${item.organization})` : ""}
-                  </small>
-                  <br />
-                  {/* Quote Body in Light Gray */}
-                  <span
-                    className="fst-italic d-inline-block mt-2"
-                    style={{
-                      whiteSpace: "pre-line",
-                      color: theme === "dark" ? "#ababab" : "#4a4a4a",
-                    }}
-                  >
-                    "{item.text}"
+                <li key={item.label ?? item.period ?? idx}>
+                  <strong className="experience-date">
+                    {item.label ?? item.period}
+                  </strong>
+
+                  <span className="about-item-text d-block mt-1">
+                    {item.text}
                   </span>
                 </li>
               ))}
-
-              {/* Embedded Screenshot & LinkedIn Profile Link at Bottom */}
-              <li className="mt-5 pt-4 border-top">
-                <h5
-                  className="fw-bold mb-3 d-flex align-items-center gap-2"
-                  style={{ color: "#ff004f" }}
-                >
-                  <i className="fa-solid fa-circle-check text-success"></i> Recommendations
-                </h5>
-
-                <div className="mb-4">
-                  <img
-                    src="/images/Reco.png"
-                    alt="Recommendations"
-                    className="img-fluid rounded border shadow-sm"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </div>
-
-                {/* Bottom LinkedIn Button */}
-                <div className="pt-2">
-                  <a
-                    href="https://www.linkedin.com/in/rshyam-bhetuwal/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`btn btn-sm ${btnVariant} d-inline-flex align-items-center gap-2`}
-                  >
-                    <i className="fa-brands fa-linkedin"></i> View Full Recommendations on LinkedIn ↗
-                  </a>
-                </div>
-              </li>
-            </>
-          ) : (
-            current.items.map((item) => (
-              <li key={item.label ?? item.period} className="mb-3">
-                {/* Title / Period in Red */}
-                <span
-                  className="fw-bold"
-                  style={{ color: "#ff004f" }}
-                >
-                  {item.label ?? item.period}
-                </span>
-                <br />
-                {/* Subtitle Details in Whitish */}
-                <span style={{ color: theme === "dark" ? "#ababab" : "#4a4a4a" }}>
-                  {item.text}
-                </span>
-              </li>
-            ))
+            </ul>
           )}
-        </ul>
+        </div>
       </Container>
     </section>
   );
