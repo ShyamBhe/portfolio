@@ -39,6 +39,10 @@ export const skills = [
 
 export const experience = [
   {
+    period: "01/2025 - Current",
+    text: "Senior Software and AI Consultant — Freelancer parttime(Advanced Healthcare responsible AI powered System)",
+  },
+  {
     period: "02/2024 - Current",
     text: "Lead AI and Software Engineer — University of Turku (Advanced Machine Vision System)",
   },

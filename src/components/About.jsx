@@ -125,7 +125,7 @@ export default function About() {
 
               <div className="recommendation-footer">
                 <p className="recommendation-meta mb-2">
-                  More recommendations are available on LinkedIn.
+                  Recommendations are publicly available on Linkedin
                 </p>
 
                 <a
@@ -135,7 +135,7 @@ export default function About() {
                   className="linkedin-recommendations-button"
                 >
                   <i className="fa-brands fa-linkedin" aria-hidden="true" />
-                  View LinkedIn Recommendations
+                  LinkedIn Recommendations
                   <span aria-hidden="true">↗</span>
                 </a>
               </div>
@@ -168,13 +168,8 @@ export default function About() {
                     className="fa-solid fa-shield-halved about-accent me-2"
                     aria-hidden="true"
                   />
-                  Previous Work Certificates
+                  Early career Work Certificates
                 </h3>
-
-                <p className="certificate-description">
-                  Early career work certificates and recommendations
-                </p>
-
                 <a
                   href="/OtherWorkCertificates_.pdf"
                   target="_blank"
