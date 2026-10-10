@@ -1318,40 +1318,4 @@ body,
     background-color 0.3s,
     color 0.3s;
 }
-/* Tiny spider cursor */ .spider-cursor { position: fixed; top: 0; left: 0; width: 32px; height: 32px; z-index: 99999; pointer-events: none; opacity: 0; overflow: visible; transition: opacity 0.15s ease; }
 
-.spider-thread { stroke: var(--accent); stroke-width: 1; fill: none; }
-
-.spider-legs path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; animation: spiderLegMove 0.4s ease-in-out infinite alternate; }
-
-.spider-abdomen { fill: var(--nav-bg); stroke: var(--accent); stroke-width: 2; }
-
-.spider-head { fill: var(--accent); }
-
-.spider-mark { fill: var(--lime); }
-
-.spider-eye { fill: var(--heading); }
-
-@keyframes spiderLegMove { from { rotate: -5deg; } to { rotate: 5deg; } }
-
-@media (prefers-reduced-motion: reduce) { .spider-cursor { display: none !important; } .spider-legs path { animation: none !important; } }
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
-
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  [role="button"],
-  [role="tab"] {
-    cursor: pointer;
-  }
-}
-
-.spider-cursor {
-  pointer-events: none !important;
-  z-index: 99999;
-}
