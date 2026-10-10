@@ -1,7 +1,10 @@
+
 import { useSettings } from "../i18n/SettingsContext.jsx";
 
 export default function Controls() {
-  const { lang, toggleLang } = useSettings();
+  const { lang, theme, toggleLang, toggleTheme, t } = useSettings();
+
+  const isDark = theme === "dark";
 
   // Select a specific language.
   // toggleLang() is only called when the requested language
@@ -14,10 +17,19 @@ export default function Controls() {
 
   return (
     <div className="site-controls">
+
       {/* Language switcher */}
-      <div className="lang-switch" role="group" aria-label="Kieli / Language">
+      <div
+        className="lang-switch"
+        role="group"
+        aria-label="Kieli / Language"
+      >
         {/* Global icon */}
-        <span className="lang-globe" aria-hidden="true" title="Language">
+        <span
+          className="lang-globe"
+          aria-hidden="true"
+          title="Language"
+        >
           <i className="fa-solid fa-globe"></i>
         </span>
 
@@ -43,6 +55,22 @@ export default function Controls() {
           EN
         </button>
       </div>
+
+      {/* Theme */}
+      <button
+        type="button"
+        className="ctrl-btn ctrl-theme"
+        onClick={toggleTheme}
+        aria-label={isDark ? t.controls.toLight : t.controls.toDark}
+        aria-pressed={isDark}
+        title={isDark ? t.controls.toLight : t.controls.toDark}
+      >
+        <i
+          className={`fa-solid ${isDark ? "fa-sun" : "fa-moon"}`}
+          aria-hidden="true"
+        ></i>
+      </button>
+
     </div>
   );
 }

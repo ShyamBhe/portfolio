@@ -28,7 +28,7 @@ export default function Hero({ onRequestCv }) {
 
         <div className="header-text">
           <p className="hello-text">
-            {h.hello} <span>Shyam (Matti)</span>
+            {h.hello} <span>Shyam (Matti, 8+ vuotta Suomessa)</span>
           </p>
 
           <h1>{h.title}</h1>

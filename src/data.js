@@ -40,7 +40,7 @@ export const skills = [
 export const experience = [
   {
     period: "01/2025 - Current",
-    text: "Senior Software and AI Consultant — Freelancer parttime(Advanced Healthcare responsible AI powered System)",
+    text: "Senior Software and AI Consultant — Freelancer parttime(Advanced Healthcare responsible AI powered Systems, AI in Food Technology, mental Health and Software Systems )",
   },
   {
     period: "02/2024 - Current",
@@ -71,7 +71,7 @@ export const experience = [
 export const education = [
   {
     period: "University of Turku (2023 - 2025)",
-    text: 'Master\u2019s in IT Engineering — Advanced Software Engineering with Data Science. Thesis (Graded 5/5): "Comparing the Accuracy and Efficiency of Existing AI Based Food Detection Tools" — Developing an AIoT based automated platform.',
+    text: 'Master\u2019s in IT Engineering — Advanced Software Engineering with Data Science. Grade 4/5 and Thesis (Graded 5/5): "Comparing the Accuracy and Efficiency of Existing AI Based Food Detection Tools" — Developing an AIoT based automated platform.',
   },
   {
     period: "Oulu University of Applied Sciences (2018 - 2022)",

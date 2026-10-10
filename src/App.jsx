@@ -6,6 +6,7 @@ import Projects from "./components/Projects.jsx";
 import Publications from "./components/Publications.jsx";
 import Contact from "./components/Contact.jsx";
 import Chatbot from "./components/Chatbot.jsx";
+import SpiderCursor from "./components/Spider.jsx";
 import { useSettings } from "./i18n/SettingsContext.jsx";
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
       <About />
       <Projects />
       <Publications />
+      <SpiderCursor />
       <Contact cvMessage={cvMessage} onRequestCv={handleRequestCv} />
 
       <footer className="footer">

@@ -25,7 +25,7 @@ export const ui = {
         "Engineering multimodal AI, full-stack software, and intelligent systems for real-world applications.",
       profile:
         '"Rapid advancements in AI is changing how the world works. I research and build intelligent software systems that bring AI and machine learning models into real-world applications. My work combines software engineering, multimodal AI, MLLMs, training models, transfer learning, LLMs, computer vision, data, and sensor-driven systems to turn complex research ideas into practical solutions."',
-      viewProjects: "View Projects",
+      viewProjects: "Works & Projects",
       requestCv: "Request CV",
       contactMe: "Contact Me",
       proof: [

@@ -41,6 +41,51 @@
   --glow-base-b: rgba(10, 10, 16, 0.96);
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --highlight: #287d4e;
+  --lime: #287d4e;
+  --accent: #287d4e;
+  --muted-pink: #374151;
+
+  --nav-bg: #ffffff;
+  --nav-text: #1f2933;
+  --drawer-bg: #ffffff;
+
+  --page-bg: #eef2f6;
+
+  --text: #1f2933;
+  --text-soft: #374151;
+  --heading: #111827;
+
+  --hero-sub: #1f2933;
+  --hero-body: #374151;
+
+  --proof-text: #4b5563;
+  --location-text: #4b5563;
+
+  --section-base: #f8fafc;
+  --overlay: rgba(248, 250, 252, 0.92);
+
+  --hover-row: rgba(0, 0, 0, 0.05);
+  --chip-bg: rgba(0, 0, 0, 0.06);
+
+  --link-icon: #0b6bb5;
+  --footer-text: #1f2933;
+
+  --card-border: rgba(0, 0, 0, 0.12);
+  --ctrl-border: rgba(0, 0, 0, 0.35);
+  --ctrl-hover: rgba(0, 0, 0, 0.08);
+
+  --glow-1: rgba(0, 150, 200, 0.07);
+  --glow-2: rgba(46, 204, 113, 0.06);
+
+  --glow-base-a: rgba(244, 247, 250, 0.97);
+  --glow-base-b: rgba(236, 241, 246, 0.97);
+}
+
+
 /* =========================================================
    BASE & RESET
    ========================================================= */
@@ -68,6 +113,7 @@ body {
   position: relative;
 }
 
+
 /* =========================================================
    AMBIENT BACKGROUND
    ========================================================= */
@@ -88,6 +134,7 @@ body::before {
   z-index: -2;
   animation: backgroundDrift 20s ease-in-out infinite;
 }
+
 
 /* =========================================================
    NAVIGATION
@@ -151,6 +198,7 @@ body::before {
   padding: 0.9rem 0.5rem;
 }
 
+
 /* =========================================================
    SUCCESS BUTTON
    ========================================================= */
@@ -176,6 +224,7 @@ body::before {
   white-space: nowrap;
 }
 
+
 /* =========================================================
    HERO SECTION
    ========================================================= */
@@ -198,6 +247,7 @@ body::before {
   background-position: center;
   animation: backgroundMove 40s ease infinite;
 }
+
 
 /* =========================================================
    HERO AMBIENT EFFECTS
@@ -247,21 +297,9 @@ body::before {
   z-index: 1;
   pointer-events: none;
   background-image:
-    radial-gradient(
-      circle at 12% 16%,
-      rgba(255, 255, 255, 0.8) 1px,
-      transparent 4px
-    ),
-    radial-gradient(
-      circle at 52% 18%,
-      rgba(255, 255, 255, 0.6) 1px,
-      transparent 5px
-    ),
-    radial-gradient(
-      circle at 86% 86%,
-      rgba(255, 255, 255, 0.5) 1px,
-      transparent 5px
-    ),
+    radial-gradient(circle at 12% 16%, rgba(255, 255, 255, 0.8) 1px, transparent 4px),
+    radial-gradient(circle at 52% 18%, rgba(255, 255, 255, 0.6) 1px, transparent 5px),
+    radial-gradient(circle at 86% 86%, rgba(255, 255, 255, 0.5) 1px, transparent 5px),
     linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size:
@@ -274,6 +312,7 @@ body::before {
     starBlink 3.5s ease-in-out infinite alternate,
     lineDrift 18s linear infinite;
 }
+
 
 /* =========================================================
    HERO CONTENT
@@ -340,6 +379,7 @@ body::before {
   margin-bottom: 1.75rem;
 }
 
+
 /* =========================================================
    PROOF + LOCATION
    ========================================================= */
@@ -368,6 +408,7 @@ body::before {
   font-weight: 500;
   text-align: center;
 }
+
 
 /* =========================================================
    HERO PHOTO / LAYOUT
@@ -413,6 +454,7 @@ body::before {
     0 0 0 6px rgba(46, 204, 113, 0.15),
     0 18px 45px rgba(0, 0, 0, 0.45);
 }
+
 
 /* =========================================================
    DESKTOP HERO  (photo left, centered text right)
@@ -480,6 +522,7 @@ body::before {
   }
 }
 
+
 /* =========================================================
    LIGHT THEME HERO PHOTO
    ========================================================= */
@@ -497,6 +540,7 @@ body::before {
     0 0 0 3px rgba(46, 204, 113, 0.12),
     0 8px 24px rgba(15, 23, 42, 0.18);
 }
+
 
 /* =========================================================
    CONTENT SECTIONS
@@ -532,6 +576,7 @@ body::before {
   line-height: 1.6;
   color: var(--text-soft);
 }
+
 
 /* =========================================================
    ABOUT TABS (base)
@@ -600,6 +645,7 @@ body::before {
   color: var(--muted-pink);
   font-size: 1.05em;
 }
+
 
 /* =========================================================
    ABOUT SECTION (polish: tabs, recommendations, certificates)
@@ -751,6 +797,7 @@ body::before {
   color: #06210f;
 }
 
+
 /* =========================================================
    CARDS
    ========================================================= */
@@ -787,6 +834,7 @@ body::before {
 .project-card:hover .card-img-top {
   transform: scale(1.03);
 }
+
 
 /* =========================================================
    CONTACT
@@ -831,6 +879,7 @@ body::before {
   transform: translateY(-2px);
 }
 
+
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -842,6 +891,7 @@ body::before {
   text-align: center;
   font-size: clamp(12px, 1.4vw, 15px);
 }
+
 
 /* =========================================================
    LANGUAGE + THEME CONTROLS
@@ -967,6 +1017,7 @@ body::before {
   }
 }
 
+
 /* =========================================================
    VERY SMALL PHONES
    ========================================================= */
@@ -983,6 +1034,7 @@ body::before {
     font-size: 0.7rem;
   }
 }
+
 
 /* =========================================================
    TABLET / MOBILE
@@ -1014,6 +1066,7 @@ body::before {
     font-size: clamp(15px, 3.5vw, 19px);
   }
 }
+
 
 /* =========================================================
    MOBILE
@@ -1058,6 +1111,7 @@ body::before {
     margin-left: 10px;
   }
 }
+
 
 /* =========================================================
    SMALL PHONES
@@ -1139,6 +1193,7 @@ body::before {
   }
 }
 
+
 /* =========================================================
    LIGHT-THEME DETAILS
    ========================================================= */
@@ -1176,6 +1231,7 @@ body::before {
   color: #157a40 !important;
 }
 
+
 /* =========================================================
    ANIMATIONS
    ========================================================= */
@@ -1207,20 +1263,10 @@ body::before {
 
 @keyframes lineDrift {
   0% {
-    background-position:
-      12% 16%,
-      52% 18%,
-      86% 86%,
-      0 0,
-      0 0;
+    background-position: 12% 16%, 52% 18%, 86% 86%, 0 0, 0 0;
   }
   100% {
-    background-position:
-      12% 16%,
-      52% 18%,
-      86% 86%,
-      120px 120px,
-      -120px -120px;
+    background-position: 12% 16%, 52% 18%, 86% 86%, 120px 120px, -120px -120px;
   }
 }
 
@@ -1244,6 +1290,7 @@ body::before {
   }
 }
 
+
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
@@ -1257,6 +1304,7 @@ body::before {
   }
 }
 
+
 /* =========================================================
    THEME TRANSITION
    ========================================================= */
@@ -1269,4 +1317,41 @@ body,
   transition:
     background-color 0.3s,
     color 0.3s;
+}
+/* Tiny spider cursor */ .spider-cursor { position: fixed; top: 0; left: 0; width: 32px; height: 32px; z-index: 99999; pointer-events: none; opacity: 0; overflow: visible; transition: opacity 0.15s ease; }
+
+.spider-thread { stroke: var(--accent); stroke-width: 1; fill: none; }
+
+.spider-legs path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; animation: spiderLegMove 0.4s ease-in-out infinite alternate; }
+
+.spider-abdomen { fill: var(--nav-bg); stroke: var(--accent); stroke-width: 2; }
+
+.spider-head { fill: var(--accent); }
+
+.spider-mark { fill: var(--lime); }
+
+.spider-eye { fill: var(--heading); }
+
+@keyframes spiderLegMove { from { rotate: -5deg; } to { rotate: 5deg; } }
+
+@media (prefers-reduced-motion: reduce) { .spider-cursor { display: none !important; } .spider-legs path { animation: none !important; } }
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  [role="tab"] {
+    cursor: pointer;
+  }
+}
+
+.spider-cursor {
+  pointer-events: none !important;
+  z-index: 99999;
 }
