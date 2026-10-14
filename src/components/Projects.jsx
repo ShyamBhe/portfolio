@@ -9,7 +9,7 @@ export default function Projects() {
     if (project.action.type === "alert") {
       alert(project.action.alertText);
     } else if (project.action.type === "window") {
-      window.open(project.action.url, "_blank");
+      window.open(project.action.url, "_blank", "noopener,noreferrer");
     }
   }
 
@@ -17,18 +17,24 @@ export default function Projects() {
     <section id="projects" className="page-section">
       <Container>
         <h2 className="sub-title">{t.projects.title}</h2>
+
         <Row className="g-4">
           {projects.map((project) => (
-            <Col key={project.id} xs={12} md={6} lg={4}>
+            <Col key={project.id} xs={12} sm={6} lg={3}>
               <Card className="project-card h-100">
                 <Card.Img
                   variant="top"
                   src={project.image}
                   alt={project.title}
                 />
+
                 <Card.Body className="d-flex flex-column">
-                  <Card.Title as="h4">{project.title}</Card.Title>
+                  <Card.Title as="h4">
+                    {project.title}
+                  </Card.Title>
+
                   <Card.Text>{project.text}</Card.Text>
+
                   <div className="mt-auto">
                     {project.action.type === "anchor" ? (
                       <Button

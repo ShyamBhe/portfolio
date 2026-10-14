@@ -86,7 +86,7 @@ export const projects = [
     image: "/images/systems.JPG",
     text: "This is my latest advanced AIoT system work, ongoing at the University of Turku. I researched and developed a machine vision-based food detection system for analysis and re-correction of food detection. Developed with AI/ML algorithms, React, Python, advanced image processing libraries and sensors. With 3 novel publications and a product tested in hospital and restaurant settings. Solved key challenges and enhanced accuracy.",
     action: {
-      label: "Project Link",
+      label: "Live Link",
       type: "window",
       url: "https://www.researchgate.net/publication/398328841_Comparing_the_Accuracy_and_Efficiency_of_Existing_AI_Based_Food_Detection_Tools_Developing_Automated_AIoT_based_Platform_for_real_time_food_detection_recognition_analysis_and_re-correction_from_Multip",
     },
@@ -102,6 +102,17 @@ export const projects = [
       url: "https://mindsightaitool.onrender.com/",
     },
   },
+  {
+  "id": "software-engineering-agent",
+  "title": "AI Software Engineering Agent",
+  "image": "/images/swui.png",
+  "text": "An AI-powered software engineering agent that automates the development workflow: understanding tasks, exploring codebases, planning implementations, writing code, running tests, fixing errors, reviewing changes, and performing security checks. Built with Claude API, LangGraph, FastAPI, Docker, and GitHub, with isolated Git branches and human approval before merging pull requests.",
+  "action": {
+    "label": "More Info",
+    "type": "anchor",
+    "url": "https://github.com/ShyamBhe/SoftwareEngineeeringAgent.git"
+  },
+},
   {
     id: "country-finder",
     title: "Country Finder AI assisted App",
@@ -122,6 +133,17 @@ export const projects = [
       label: "Live Link",
       type: "anchor",
       url: "https://onlinetshirtshop.netlify.app/",
+    },
+  },
+  {
+    id: "cv-maker",
+    title: "Full-Stack CV Maker Application",
+    image: "/images/cvui.png",
+    text: "A full-stack web application for creating professional CVs quickly and easily. Features CV creation, PDF generation, document parsing, and downloadable, printable CVs. Built with FastAPI, Python, React, and deployed online in render. Users no need to Login for basic use. To download users need to register with email and password",
+    action: {
+      label: "Live Link",
+      type: "anchor",
+      url: "https://cv-maker-application.onrender.com/",
     },
   },
   {
