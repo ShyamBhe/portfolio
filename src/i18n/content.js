@@ -7,6 +7,7 @@ const fi = {
     "#projects": "Projektit",
     "#publications": "Julkaisut",
     "#contact": "Yhteystiedot",
+    "https://ai-info-news-articles-latest.onrender.com/": "AI Info",
   },
 
   // Same order as data.skills. Technology names stay in English on purpose.
@@ -110,7 +111,8 @@ const fi = {
       action: { label: "Live-linkki" },
     },
   },
-
+  
+  
   // Keyed by publication id. Titles are official and stay in English.
   publications: {
     "energy-composition": {

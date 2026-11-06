@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Container, Navbar, Nav as BsNav, Offcanvas } from "react-bootstrap";
 import { useSettings } from "../i18n/SettingsContext.jsx";
@@ -9,7 +10,9 @@ export default function Nav() {
   const [activeHref, setActiveHref] = useState("#header");
 
   useEffect(() => {
-    const sections = Array.from(document.querySelectorAll("section[id]"));
+    const sections = Array.from(
+      document.querySelectorAll("section[id]")
+    );
 
     function setActiveLink() {
       let currentId = sections[0]?.id;
@@ -21,16 +24,26 @@ export default function Nav() {
         }
       }
 
-      setActiveHref(`#${currentId}`);
+      if (currentId) {
+        setActiveHref(`#${currentId}`);
+      }
     }
 
-    window.addEventListener("scroll", setActiveLink, { passive: true });
+    window.addEventListener("scroll", setActiveLink, {
+      passive: true,
+    });
+
     setActiveLink();
 
-    return () => window.removeEventListener("scroll", setActiveLink);
+    return () =>
+      window.removeEventListener("scroll", setActiveLink);
   }, []);
 
   const isDark = theme === "dark";
+
+  // External AI Info page
+  const aiInfoUrl =
+    "https://ai-info-news-articles-latest.onrender.com/";
 
   return (
     <Navbar
@@ -50,10 +63,10 @@ export default function Nav() {
           />
         </Navbar.Brand>
 
-        {/* Language + theme: always visible, also on mobile (before the burger). */}
+        {/* Language and theme controls */}
         <Controls />
 
-        {/* Bootstrap swaps this for a close (X) button inside the drawer */}
+        {/* Mobile menu toggle */}
         <Navbar.Toggle
           aria-controls="menu-drawer"
           aria-label={t.controls.menu}
@@ -77,6 +90,16 @@ export default function Nav() {
                   key={item.href}
                   href={item.href}
                   active={activeHref === item.href}
+                  target={
+                    item.href.startsWith("http")
+                      ? "_blank"
+                      : undefined
+                  }
+                  rel={
+                    item.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                   onClick={() => setExpanded(false)}
                 >
                   <i className={`fa ${item.icon}`}></i>{" "}
@@ -85,6 +108,17 @@ export default function Nav() {
                     : item.label}
                 </BsNav.Link>
               ))}
+
+              {/* AI Info external navigation link */}
+              <BsNav.Link
+                href={aiInfoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setExpanded(false)}
+              >
+                <i className="fa fa-newspaper"></i>{" "}
+                AI Info
+              </BsNav.Link>
             </BsNav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
