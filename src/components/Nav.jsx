@@ -119,6 +119,16 @@ export default function Nav() {
                 <i className="fa fa-newspaper"></i>{" "}
                 AI Info
               </BsNav.Link>
+              {/* AI Info external navigation link */}
+             <BsNav.Link
+               href="https://github.com/ShyamBhe"
+               target="_blank"
+               rel="noopener noreferrer"
+               onClick={() => setExpanded(false)}
+              >
+               <i className="fa fa-github"></i>{" "}
+               Open Source Projects
+              </BsNav.Link>
             </BsNav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

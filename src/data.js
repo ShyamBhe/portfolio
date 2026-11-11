@@ -125,14 +125,14 @@ export const projects = [
     },
   },
   {
-    id: "ecommerce",
-    title: "Ecommerce Shop",
-    image: "/images/OnlineShop.png",
-    text: "One of many freelance client based applications: a sample UI for a hybrid app. Admins can add and update products, clients can view, filter, order, and have products delivered. Part of a full-stack client project built with React, Redux, payment authentication, advanced user authentication, Node, MS Azure, AWS, C#, Docker and Jenkins. Worked on live on production projects according to client's needs",
+    id: "autoanalytics",
+    title: "AutoAnalytics: Automated Data Analysis Platform",
+    image: "/images/autoAnalysis.png",
+    text: "A web platform that analyzes data automatically and updates itself when new or changed data arrives. It loads only new or changed records, cleans messy CSV, JSON, XML and Excel files by finding missing values, outliers and duplicates, and produces plain-language findings with charts for distributions, trends and correlations. Built with Python, FastAPI, pandas, SQLite, Chart.js and Docker.",
     action: {
       label: "Live Link",
       type: "anchor",
-      url: "https://onlinetshirtshop.netlify.app/",
+      url: "https://automated-data-analysis-platform.onrender.com/",
     },
   },
   {
@@ -228,6 +228,13 @@ export const publications = [
     text: "Co-authored publication reporting a feasibility study testing FlavoriaFlex in a real hospital ward, evaluating whether AI-based food recognition can replace the manual, subjective process of tracking patient nutrient intake.",
     url: "https://www.researchgate.net/publication/408462814_Assessing_Hospital_Patient_Nutrient_Intake_with_an_AI-Powered_Food_Recognition_System_-_A_Feasibility_Study_of_the_FlavoriaFlex_solution",
   },
+  {
+  id: "nepalilainen-ai-employment", // or a unique number/ID
+  type: "Article / Media",
+  title: "AI is changing the employment landscape: What will a software engineer in Finland do now?",
+  text: "AI is changing not only the way we work, but also the nature of jobs and the skills required. But is it taking away jobs, or creating new opportunities?",
+  url: "https://nepalilainen.fi/ai-is-changing-the-employment-sector-what-should-software-engineers-in-finland-do-now/"
+}
 ];
 
 export const researchGateProfile =
@@ -239,4 +246,8 @@ export const contact = {
   githubPrimary: { url: "https://github.com/ShyamBhe", label: "ShyamBhe" },
   githubSecondary: { url: "https://github.com/Shyamraja", label: "Shyamraja" },
   linkedin: "https://www.linkedin.com/in/rshyamvetwal/",
+  nepalilainen_Profile: {
+    url: "https://nepalilainen.fi/ai-is-changing-the-employment-sector-what-should-software-engineers-in-finland-do-now/",
+    label: "Nepalilainen News",
+  },
 };

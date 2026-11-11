@@ -3,7 +3,27 @@ import { useSettings } from "../i18n/SettingsContext.jsx";
 
 export default function Publications() {
   const { t, content } = useSettings();
-  const { publications, researchGateProfile } = content;
+  const { publications = [], researchGateProfile } = content;
+
+  // Add extra non-dynamic/article publications if not already in context
+  const extraPublications = [
+    {
+      id: "nepalilainen-ai-employment",
+      type: "Article / Media",
+      title: "AI is changing the employment landscape: What will a software engineer in Finland do now?",
+      text: "AI is changing not only the way we work, but also the nature of jobs and the skills required. But is it taking away jobs, or creating new opportunities?",
+      url: "https://nepalilainen.fi/ai-is-changing-the-employment-sector-what-should-software-engineers-in-finland-do-now/",
+      buttonText: "Read Full Article", // Custom dynamic button text for media articles
+    },
+  ];
+
+  // Merge context publications with additional publications safely
+  const allPublications = [
+    ...publications,
+    ...extraPublications.filter(
+      (extra) => !publications.some((p) => p.id === extra.id)
+    ),
+  ];
 
   return (
     <section id="publications" className="page-section">
@@ -19,9 +39,10 @@ export default function Publications() {
           )}
         </p>
 
+        {/* lg={3} displays 4 cards in 1 single row on large screens */}
         <Row className="g-4">
-          {publications.map((pub) => (
-            <Col key={pub.id} xs={12} md={6} lg={4}>
+          {allPublications.map((pub) => (
+            <Col key={pub.id} xs={12} sm={6} lg={3}>
               <Card className="publication-card h-100 text-start">
                 <Card.Body className="d-flex flex-column">
                   <span className="pub-type">{pub.type}</span>
@@ -35,7 +56,7 @@ export default function Publications() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {t.publications.view}
+                      {pub.buttonText || t?.publications?.view || "View"}
                     </Button>
                   </div>
                 </Card.Body>
