@@ -11,7 +11,7 @@ export default function Publications() {
       id: "nepalilainen-ai-employment",
       type: "Article / Media",
       title: "AI is changing the employment landscape: What will a software engineer in Finland do now?",
-      text: "AI is changing not only the way we work, but also the nature of jobs and the skills required. But is it taking away jobs, or creating new opportunities?. This is a research article by me published in Nepali Lainen, a Finnish media outlet, discussing the impact of AI on the employment sector and providing insights for software engineers in Finland.",
+      text: "AI is changing not only the way we work, but also the nature of jobs and the skills required. But is it taking away jobs, or creating new opportunities? This is a research article by me published in Nepali Lainen, a Finnish media outlet, discussing the impact of AI on the employment sector and providing insights for software engineers in Finland.",
       url: "https://nepalilainen.fi/ai-is-changing-the-employment-sector-what-should-software-engineers-in-finland-do-now/",
       buttonText: "Read Full Article", // Custom dynamic button text for media articles
     },

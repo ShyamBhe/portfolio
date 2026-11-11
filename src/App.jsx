@@ -8,6 +8,7 @@ import Contact from "./components/Contact.jsx";
 import Chatbot from "./components/Chatbot.jsx";
 //import SpiderCursor from "./components/Spider.jsx";
 import { useSettings } from "./i18n/SettingsContext.jsx";
+import ScrollToggle from './components/ScrollToggle';
 
 export default function App() {
   const { t, content } = useSettings();
@@ -38,7 +39,7 @@ export default function App() {
       <Projects />
       <Publications />
       <Contact cvMessage={cvMessage} onRequestCv={handleRequestCv} />
-
+<ScrollToggle />
       <footer className="footer">
         <span>{t.footer}</span>
       </footer>
